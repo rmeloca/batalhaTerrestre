@@ -17,31 +17,25 @@ import javax.swing.JFrame;
 public class GUI extends JFrame {
 
     JButton[][] campos;
+    ActionListener campoActionListener;
 
     public GUI() {
-        while (true) {
-            while (true) {
-                campos[1][2] = new JButton();
-                campos[1][2].addActionListener(campoActionListener.actionPerformed(e));
-            }
-        }
 
-        campos[1][2].addActionListener(new ActionListener() {
+        campoActionListener = new ActionListener() {
 
             @Override
             public void actionPerformed(ActionEvent e) {
                 throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
             }
-        }
-        );
+        };
 
-    }
-    ActionListener campoActionListener = new ActionListener() {
-
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        while (true) {
+            while (true) {
+                campos[1][2] = new JButton();
+                campos[1][2].addActionListener(campoActionListener);
+            }
         }
+
     }
 
 }
