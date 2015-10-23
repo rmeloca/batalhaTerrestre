@@ -3,13 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
-package Jogo;
+package Jogo.Alvo;
 
 /**
  *
- * @author a1137131
+ * @author romulo
  */
-public class Navio {
+public abstract class Objeto {
     
 }
