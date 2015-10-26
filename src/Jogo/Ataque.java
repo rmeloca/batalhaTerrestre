@@ -3,12 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Jogo.Alvo;
+package Jogo;
+
+import Jogo.Grelha.Campo;
+import java.util.List;
 
 /**
  *
  * @author romulo
  */
-public class Submarino extends Navio{
-    
+public interface Ataque {
+
+    public void atirar(List<Campo> campos);
 }

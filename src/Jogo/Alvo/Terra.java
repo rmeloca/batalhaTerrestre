@@ -9,6 +9,6 @@ package Jogo.Alvo;
  *
  * @author romulo
  */
-public final class Comum extends Navio{
+public final class Terra extends Objeto{
     
 }

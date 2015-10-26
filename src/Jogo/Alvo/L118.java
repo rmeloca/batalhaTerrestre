@@ -5,6 +5,7 @@
  */
 package Jogo.Alvo;
 
+import Jogo.Ataque;
 import Jogo.Grelha.Campo;
 import java.util.List;
 
@@ -12,8 +13,11 @@ import java.util.List;
  *
  * @author romulo
  */
-public abstract class Objeto {
+public class L118 extends Arma implements Ataque {
 
-    String imagem;
-    List<Campo> campos;
+    @Override
+    public void atirar(List<Campo> campos) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 }

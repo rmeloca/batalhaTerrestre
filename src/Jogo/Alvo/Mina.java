@@ -5,10 +5,15 @@
  */
 package Jogo.Alvo;
 
+import Jogo.Grelha.Campo;
+
 /**
  *
  * @author romulo
  */
-public class PortaAviao extends Navio{
-    
+public final class Mina extends Arma {
+
+    public void explodir(Campo campo) {
+
+    }
 }

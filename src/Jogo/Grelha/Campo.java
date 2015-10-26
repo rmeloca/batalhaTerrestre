@@ -5,10 +5,17 @@
  */
 package Jogo.Grelha;
 
+import Jogo.Alvo.Objeto;
+
 /**
  *
  * @author romulo
  */
 public class Campo {
-    
+
+    Objeto objeto;
+    boolean atirado;
+    Coordenada coordenada;
+    boolean atiravel;
+
 }

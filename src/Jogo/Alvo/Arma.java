@@ -5,10 +5,16 @@
  */
 package Jogo.Alvo;
 
+import Jogo.Grelha.Campo;
+import java.util.List;
+
 /**
  *
- * @author romulo
+ * @author a1137131
  */
-public final class Agua extends Objeto{
-    
+public abstract class Arma extends Objeto {
+
+    int tamanho;
+    List<Campo> campos;
+    boolean vivo;
 }
