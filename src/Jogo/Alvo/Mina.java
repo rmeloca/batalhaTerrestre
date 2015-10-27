@@ -5,7 +5,7 @@
  */
 package Jogo.Alvo;
 
-import Jogo.Grelha.Campo;
+import Jogo.Tabuleiro.Campo;
 
 /**
  *

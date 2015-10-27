@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Jogo.Grelha;
+package Jogo.Tabuleiro;
 
 /**
  *
@@ -15,7 +15,8 @@ public class Coordenada {
     private int y;
 
     public Coordenada(int x, int y) {
-
+        setX(x);
+        setY(y);
     }
 
     public int getX() {
@@ -23,7 +24,7 @@ public class Coordenada {
     }
 
     private void setX(int x) {
-        if (x > 0) {
+        if (x >= 0) {
             this.x = x;
         }
     }
@@ -33,9 +34,9 @@ public class Coordenada {
     }
 
     private void setY(int y) {
-        if (y > 0) {
-        this.y = y;
-    }
+        if (y >= 0) {
+            this.y = y;
+        }
     }
 
 }
