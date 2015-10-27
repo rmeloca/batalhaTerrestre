@@ -14,7 +14,26 @@ import java.util.List;
  */
 public abstract class Arma extends Objeto {
 
-    int tamanho;
-    List<Campo> campos;
+    private int tamanho;
+    private List<Campo> campos;
+
+    public boolean rotacionar(){
+        if(tamanho == 3){
+        }
+        
+        return true;
+    }
+    
+    public void setVivo(boolean vivo) {
+        this.vivo = vivo;
+    }
+
+    public int getTamanho() {
+        return tamanho;
+    }
+
+    public boolean isVivo() {
+        return vivo;
+    }
     boolean vivo;
 }

@@ -16,4 +16,20 @@ public abstract class Objeto {
 
     String imagem;
     List<Campo> campos;
+
+    public String getImagem() {
+        return imagem;
+    }
+
+    public void setImagem(String imagem) {
+        this.imagem = imagem;
+    }
+
+    public List<Campo> getCampos() {
+        return campos;
+    }
+
+    public void setCampos(List<Campo> campos) {
+        this.campos = campos;
+    }
 }
