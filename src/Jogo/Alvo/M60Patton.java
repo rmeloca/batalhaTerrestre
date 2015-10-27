@@ -5,7 +5,6 @@
  */
 package Jogo.Alvo;
 
-import Jogo.Ataque;
 import Jogo.Grelha.Campo;
 import java.util.List;
 

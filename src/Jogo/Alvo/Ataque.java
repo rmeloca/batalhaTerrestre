@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Jogo;
+package Jogo.Alvo;
 
 import Jogo.Grelha.Campo;
 import java.util.List;
