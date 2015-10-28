@@ -3,58 +3,53 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package Jogo;
+
+import Jogo.Tabuleiro.Grelha;
 
 /**
  *
  * @author a1137131
  */
 public class Jogo {
-    private Jogador rodada;
-    private Jogador jogador1;
-    private Jogador jogador2;
+
+    private Estrategia estrategia1;
+    private Estrategia estrategia2;
     private int dimensao;
+    private Jogador jogadorRodada;
     private Jogador vencedor;
 
-    public Jogador getRodada() {
-        return rodada;
+    public Jogo(int dimensao, Jogador jogador1, Jogador jogador2) {
+        setDimensao(dimensao);
+        this.jogadorRodada = jogador1;
+        estrategia1 = new Estrategia(jogador1, new Grelha(dimensao));
+        estrategia2 = new Estrategia(jogador2, new Grelha(dimensao));
     }
 
-    public void setRodada(Jogador rodada) {
-        this.rodada = rodada;
-    }
-
-    public Jogador getJogador1() {
-        return jogador1;
-    }
-
-    public void setJogador1(Jogador jogador1) {
-        this.jogador1 = jogador1;
-    }
-
-    public Jogador getJogador2() {
-        return jogador2;
-    }
-
-    public void setJogador2(Jogador jogador2) {
-        this.jogador2 = jogador2;
+    public Jogador getJogadorProximaRodada() {
+        throw new UnsupportedOperationException();
     }
 
     public int getDimensao() {
         return dimensao;
     }
 
-    public void setDimensao(int dimensao) {
-        this.dimensao = dimensao;
+    private void setDimensao(int dimensao) {
+        if (dimensao > 5) {
+            this.dimensao = dimensao;
+        }
     }
 
     public Jogador getVencedor() {
-        return vencedor;
+        throw new UnsupportedOperationException();
     }
 
-    public void setVencedor(Jogador vencedor) {
-        this.vencedor = vencedor;
+    public Estrategia getEstrategia1() {
+        return estrategia1;
     }
-    
+
+    public Estrategia getEstrategia2() {
+        return estrategia2;
+    }
+
 }

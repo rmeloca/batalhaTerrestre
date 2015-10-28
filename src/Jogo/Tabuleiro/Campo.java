@@ -18,7 +18,7 @@ public class Campo {
     private Coordenada coordenada;
     private boolean atiravel;
 
-    public Campo(Objeto objeto, Coordenada coordenada){
+    public Campo(Coordenada coordenada, Objeto objeto){
         setObjeto(objeto);
         setCoordenada(coordenada);
         setAtirado(false);

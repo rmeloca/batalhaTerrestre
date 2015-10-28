@@ -5,10 +5,6 @@
  */
 package Jogo.Tabuleiro;
 
-import Jogo.Alvo.Arma;
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  *
  * @author romulo
@@ -16,25 +12,15 @@ import java.util.List;
 public class Grelha {
 
     private Campo[][] campos;
-    private List<Arma> armas;
     private int dimensao;
 
     public Grelha(int dimensao) {
-        this.armas = new ArrayList<>();
         campos = new Campo[dimensao][dimensao];
         setDimensao(dimensao);
     }
 
     public Campo[][] getCampos() {
         return campos;
-    }
-
-    public List<Arma> getArmas() {
-        return armas;
-    }
-
-    public void addArma(Arma arma) {
-        this.armas.add(arma);
     }
 
     public int getDimensao() {
