@@ -8,6 +8,7 @@ package Jogo.Alvo;
 import Jogo.Tabuleiro.Campo;
 import Jogo.Tabuleiro.Coordenada;
 import Jogo.Tabuleiro.Grelha;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -21,18 +22,65 @@ public abstract class Arma extends Objeto {
 
     public boolean rotacionar() {
         if (tamanho == 3) {
-            Campo campo1 = campos.get(0);
-            Campo campo2 = campos.get(1);
-            Grelha grelha = campo1.getGrelha();
+            Campo campoInf = campos.get(0);
+            Campo campoMei = campos.get(1);
+            Campo campoSup = campos.get(2);
+            Grelha grelha = campoMei.getGrelha();
+
+            Coordenada coordenada = campoMei.getCoordenada();
+            Campo novoCampoInf;
+            Campo novoCampoSup;
+            Campo todosCampos[][];
             
-            Coordenada coordenada = campo2.getCoordenada();
             
-            Campo todosCampos[][] = grelha.getCampos();
-//            todosCampos[coordenada.getX()][coordenada.getY()];
-            Campo campo3 = campos.get(2);
+            if ((campoSup.getCoordenada().getX() == campoMei.getCoordenada().getX())
+                    && (campoInf.getCoordenada().getX() == campoSup.getCoordenada().getX())) {
+                todosCampos = grelha.getCampos();
+                novoCampoSup = todosCampos[(coordenada.getX() - 1)][(coordenada.getY() + 1)];
+                novoCampoInf = todosCampos[(coordenada.getX() - 1)][(coordenada.getY() - 1)];
+            } else {
+                todosCampos = grelha.getCampos();
+                novoCampoSup = todosCampos[(coordenada.getX() + 1)][(coordenada.getY() + 1)];
+                novoCampoInf = todosCampos[(coordenada.getX() - 1)][(coordenada.getY() - 1)];
+            }
+            if (!(novoCampoSup.getObjeto() instanceof Terra)) {
+                return false;
+            }
+            if (!(novoCampoInf.getObjeto() instanceof Terra)) {
+                return false;
+            }
+            trocarCampos(campoSup, novoCampoSup);
+            trocarCampos(campoInf, novoCampoInf);
+
+            List<Campo> novaLista = new ArrayList<Campo>();
+            novaLista.add(novoCampoInf);
+            novaLista.add(campoMei);
+            novaLista.add(novoCampoSup);
+            campos = novaLista;
+
         }
 
         return true;
+    }
+
+    public void trocarCampos(Campo campo1, Campo campo2) {
+        Objeto objeto1 = campo1.getObjeto();
+        Objeto objeto2 = campo2.getObjeto();
+
+        campo1.setObjeto(objeto2);
+        campo2.setObjeto(objeto1);
+
+        boolean atirado1 = campo1.foiAtirado();
+        boolean atirado2 = campo2.foiAtirado();
+
+        campo1.setAtirado(atirado2);
+        campo2.setAtirado(atirado1);
+
+        boolean atiravel1 = campo1.isAtiravel();
+        boolean atiravel2 = campo2.isAtiravel();
+
+        campo1.setAtiravel(atiravel2);
+        campo2.setAtiravel(atiravel1);
     }
 
     public void setVivo(boolean vivo) {

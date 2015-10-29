@@ -23,11 +23,7 @@ public class Campo {
         return grelha;
     }
 
-    public void setGrelha(Grelha grelha) {
-        this.grelha = grelha;
-    }
-
-    public Campo(Coordenada coordenada, Objeto objeto){
+     public Campo(Coordenada coordenada, Objeto objeto){
         setObjeto(objeto);
         setCoordenada(coordenada);
         setAtirado(false);

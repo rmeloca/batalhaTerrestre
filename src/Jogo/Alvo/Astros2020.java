@@ -16,7 +16,8 @@ public class Astros2020 extends Arma implements Ataque{
 
     @Override
     public void atirar(List<Campo> campos) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
     }
     
 }
