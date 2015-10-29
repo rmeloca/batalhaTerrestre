@@ -12,11 +12,7 @@ import java.util.List;
  *
  * @author romulo
  */
-public final class M60Patton extends Arma implements Ataque {
+public class M60Patton extends CarroCombate {
 
-    @Override
-    public void atirar(List<Campo> campos) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
+  
 }

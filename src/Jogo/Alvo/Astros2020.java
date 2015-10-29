@@ -12,12 +12,7 @@ import java.util.List;
  *
  * @author romulo
  */
-public class Astros2020 extends Arma implements Ataque{
+public class Astros2020 extends CarroCombate {
 
-    @Override
-    public void atirar(List<Campo> campos) {
-//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-        
-    }
     
 }
