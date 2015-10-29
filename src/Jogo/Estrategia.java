@@ -49,6 +49,9 @@ public class Estrategia {
     }
 
     public void dispoeArmas() {
+        for (Arma arma : armas) {
+            break;
+        }
         throw new UnsupportedOperationException();
     }
 }
