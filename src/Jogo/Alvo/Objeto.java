@@ -15,8 +15,8 @@ import java.util.List;
 public abstract class Objeto {
 
     String imagem;
-    List<Campo> campos;
-
+    List<Campo> campos;    
+    
     public String getImagem() {
         return imagem;
     }
