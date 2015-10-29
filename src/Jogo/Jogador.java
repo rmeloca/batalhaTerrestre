@@ -3,29 +3,28 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package Jogo;
-
-import Jogo.Tabuleiro.Grelha;
 
 /**
  *
  * @author a1137131
  */
 public class Jogador {
- private String nome;
- private Grelha grelha;
+
+    private String nome;
+
+    public Jogador(String nome) {
+        setNome(nome);
+    }
 
     public String getNome() {
         return nome;
     }
 
     public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public Grelha getGrelha() {
-        return grelha;
+        if (nome != null) {
+            this.nome = nome;
+        }
     }
 
 }
