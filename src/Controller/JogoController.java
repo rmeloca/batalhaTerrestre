@@ -26,7 +26,7 @@ public class JogoController {
         armasDisponiveis.add(new Astros2020());
         armasDisponiveis.add(new L118());
         armasDisponiveis.add(new Guarani());
-        armasDisponiveis.add(new Mina());
+        armasDisponiveis.add(new M15());
     }
 
     public void addJogo(Jogo jogo) {
