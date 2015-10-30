@@ -30,7 +30,7 @@ public class textView {
         Jogo jogo = new Jogo(10, new Jogador("a"), new Jogador("b"));
         jogoController.addJogo(jogo);
         jogo.getEstrategia1().addArma(new Guarani());
-        jogo.getEstrategia1().addArma(new Mina());
+        jogo.getEstrategia1().addArma(new M15());
         jogo.getEstrategia1().addArma(new Astros2020());
 
         //jogador 1 plantar minas

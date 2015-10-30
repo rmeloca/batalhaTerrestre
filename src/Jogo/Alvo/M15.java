@@ -11,7 +11,7 @@ import Jogo.Tabuleiro.Campo;
  *
  * @author romulo
  */
-public final class Mina extends Arma {
+public final class M15 extends Arma {
 
     public void explodir(Campo campo) {
 

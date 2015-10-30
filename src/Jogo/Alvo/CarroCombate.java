@@ -15,7 +15,7 @@ import java.util.List;
 public abstract class CarroCombate extends Arma{
 
     public int atirar(List<Campo> campos){
-    
+        int tamanho = campos.size();
     return 0;
     }
 }
