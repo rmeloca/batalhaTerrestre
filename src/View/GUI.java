@@ -5,6 +5,7 @@
  */
 package View;
 
+import Jogo.Tabuleiro.Grelha;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -18,44 +19,22 @@ import javax.swing.JPanel;
  */
 public class GUI extends JFrame {
 
-    JButton[][] campos;
-    ActionListener campoActionListener;
-
     public GUI() {
 
-        campoActionListener = new ActionListener() {
-
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-            }
-        };
-
-        int dimensao = 10;
-        campos = new JButton[dimensao][dimensao];
-
-        JPanel jPanelTabuleiro = new JPanel(new GridLayout(dimensao, dimensao));
-        for (int i = 0; i < 10; i++) {
-            for (int j = 0; j < 10; j++) {
-                campos[i][j] = new JButton();
-                campos[i][j].addActionListener(campoActionListener);
-                jPanelTabuleiro.add(campos[i][j]);
-            }
-        }
-        
         JPanel jPanelMenu = new JPanel(new GridLayout(3, 1));
-        jPanelMenu.add(campos[0][0]);
-        jPanelMenu.add(campos[0][1]);
-        jPanelMenu.add(campos[0][2]);
+        jPanelMenu.add(new JButton());
+        jPanelMenu.add(new JButton());
+        jPanelMenu.add(new JButton());
 
-        JPanel jPanel = new JPanel(new GridLayout(1, 2));
+        JPanel jPanel = new JPanel(new GridLayout(1, 3));
         setContentPane(jPanel);
 
+        jPanel.add(new painelGrelha(new Grelha(10)));
         jPanel.add(jPanelMenu);
-        jPanel.add(jPanelTabuleiro);
+        jPanel.add(new painelGrelha(new Grelha(10)));
 
         setResizable(false);
-        setSize(700, 300);
+        setSize(1300, 500);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
 
         setVisible(true);
