@@ -12,7 +12,10 @@ import java.util.List;
  *
  * @author romulo
  */
-public interface Ataque {
+public abstract class CarroCombate extends Arma{
 
-    public void atirar(List<Campo> campos);
+    public int atirar(List<Campo> campos){
+    
+    return 0;
+    }
 }
