@@ -13,6 +13,7 @@ import Jogo.Tabuleiro.Campo;
  */
 public class Explosivo extends Arma{
     public int explodir(Campo campo){
-    
-    return 0;}
+        Objeto objeto = campo.getObjeto();
+        return 0;
+    }
 }

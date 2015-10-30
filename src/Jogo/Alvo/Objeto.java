@@ -15,7 +15,7 @@ import java.util.List;
 public abstract class Objeto {
 
     String imagem;
-    List<Campo> campos;    
+    List<Campo> camposObjeto;    
     
     public String getImagem() {
         return imagem;
@@ -26,10 +26,10 @@ public abstract class Objeto {
     }
 
     public List<Campo> getCampos() {
-        return campos;
+        return camposObjeto;
     }
 
     public void setCampos(List<Campo> campos) {
-        this.campos = campos;
+        this.camposObjeto = campos;
     }
 }
