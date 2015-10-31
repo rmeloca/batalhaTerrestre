@@ -5,14 +5,19 @@
  */
 package Jogo.Alvo;
 
-import Jogo.Tabuleiro.Campo;
-import java.util.List;
-
 /**
  *
  * @author romulo
  */
 public class L118 extends CarroCombate {
 
+    public L118() {
+        setTamanho(1);
+    }
+
+    @Override
+    public String toString() {
+        return "L";
+    }
 
 }

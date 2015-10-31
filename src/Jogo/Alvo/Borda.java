@@ -9,6 +9,11 @@ package Jogo.Alvo;
  *
  * @author romulo
  */
-public final class Borda extends Objeto{
-    
+public final class Borda extends Objeto {
+
+    @Override
+    public String toString() {
+        return "+";
+    }
+
 }

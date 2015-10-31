@@ -11,8 +11,9 @@ import Jogo.Tabuleiro.Campo;
  *
  * @author MarcoC
  */
-public class Explosivo extends Arma{
-    public int explodir(Campo campo){
+public abstract class Explosivo extends Arma {
+
+    public int explodir(Campo campo) {
         Objeto objeto = campo.getObjeto();
         return 0;
     }

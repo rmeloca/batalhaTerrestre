@@ -17,24 +17,14 @@ import java.util.List;
  */
 public abstract class Arma extends Objeto {
 
-    private List<Campo> camposArma;
     private boolean vivo;
     private int tamanho;
 
-    public List<Campo> getCamposArma() {
-        return camposArma;
-    }
-
-    public void setCamposArma(List<Campo> camposArma) {
-        this.camposArma = camposArma;
-    }
-
-    
     public boolean rotacionar() {
         if (tamanho == 3) {
-            Campo campoInf = camposObjeto.get(0);
-            Campo campoMei = camposObjeto.get(1);
-            Campo campoSup = camposObjeto.get(2);
+            Campo campoInf = campos.get(0);
+            Campo campoMei = campos.get(1);
+            Campo campoSup = campos.get(2);
             Grelha grelha = campoMei.getGrelha();
 
             Coordenada coordenada = campoMei.getCoordenada();
@@ -61,11 +51,11 @@ public abstract class Arma extends Objeto {
             trocarCampos(campoSup, novoCampoSup);
             trocarCampos(campoInf, novoCampoInf);
 
-            List<Campo> novaLista = new ArrayList<Campo>();
+            List<Campo> novaLista = new ArrayList<>();
             novaLista.add(novoCampoInf);
             novaLista.add(campoMei);
             novaLista.add(novoCampoSup);
-            camposObjeto = novaLista;
+            campos = novaLista;
 
         }
 
@@ -98,6 +88,12 @@ public abstract class Arma extends Objeto {
 
     public int getTamanho() {
         return tamanho;
+    }
+
+    protected void setTamanho(int tamanho) {
+        if (tamanho > 0) {
+            this.tamanho = tamanho;
+        }
     }
 
     public boolean isVivo() {

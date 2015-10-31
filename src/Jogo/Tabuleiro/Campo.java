@@ -17,12 +17,16 @@ public class Campo {
     private boolean atirado;
     private Coordenada coordenada;
     private boolean atiravel;
-    Grelha grelha;
+    private Grelha grelha;
 
     public Grelha getGrelha() {
         return grelha;
     }
 
+    protected void setGrelha(Grelha grelha){
+        this.grelha = grelha;
+    }
+    
      public Campo(Coordenada coordenada, Objeto objeto){
         setObjeto(objeto);
         setCoordenada(coordenada);

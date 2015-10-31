@@ -5,14 +5,19 @@
  */
 package Jogo.Alvo;
 
-import Jogo.Tabuleiro.Campo;
-import java.util.List;
-
 /**
  *
  * @author romulo
  */
 public class Astros2020 extends CarroCombate {
 
-    
+    public Astros2020() {
+        setTamanho(4);
+    }
+
+    @Override
+    public String toString() {
+        return "A";
+    }
+
 }

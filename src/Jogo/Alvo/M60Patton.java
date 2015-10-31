@@ -5,14 +5,19 @@
  */
 package Jogo.Alvo;
 
-import Jogo.Tabuleiro.Campo;
-import java.util.List;
-
 /**
  *
  * @author romulo
  */
 public class M60Patton extends CarroCombate {
 
-  
+    public M60Patton() {
+        setTamanho(3);
+    }
+
+    @Override
+    public String toString() {
+        return "M";
+    }
+
 }

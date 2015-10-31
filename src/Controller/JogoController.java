@@ -32,4 +32,8 @@ public class JogoController {
     public void addJogo(Jogo jogo) {
         this.jogos.add(jogo);
     }
+
+    public List<Arma> getArmasDisponiveis() {
+        return armasDisponiveis;
+    }
 }

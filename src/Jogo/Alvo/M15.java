@@ -5,15 +5,19 @@
  */
 package Jogo.Alvo;
 
-import Jogo.Tabuleiro.Campo;
-
 /**
  *
  * @author romulo
  */
-public final class M15 extends Arma {
+public final class M15 extends Explosivo {
 
-    public void explodir(Campo campo) {
-
+    public M15() {
+        setTamanho(1);
     }
+
+    @Override
+    public String toString() {
+        return "*";
+    }
+
 }

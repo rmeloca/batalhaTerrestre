@@ -5,15 +5,19 @@
  */
 package Jogo.Alvo;
 
-import Jogo.Tabuleiro.Campo;
-import java.util.List;
-
 /**
  *
  * @author romulo
  */
 public class Guarani extends CarroCombate {
 
-    
+    public Guarani() {
+        setTamanho(2);
+    }
+
+    @Override
+    public String toString() {
+        return "G";
+    }
 
 }

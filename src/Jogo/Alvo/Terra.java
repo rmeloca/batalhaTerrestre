@@ -9,6 +9,11 @@ package Jogo.Alvo;
  *
  * @author romulo
  */
-public final class Terra extends Objeto{
-    
+public final class Terra extends Objeto {
+
+    @Override
+    public String toString() {
+        return "T";
+    }
+
 }

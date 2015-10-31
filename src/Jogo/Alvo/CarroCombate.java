@@ -33,8 +33,8 @@ public abstract class CarroCombate extends Arma {
                 objeto = campo.getObjeto();
                 arma = (Arma) objeto;
                 if (arma instanceof CarroCombate) {
-                    camposArma = arma.getCamposArma();
-                    novoCampos = new ArrayList<Campo>();
+                    camposArma = arma.getCampos();
+                    novoCampos = new ArrayList<>();
                     for (Campo c : camposArma) {
                         if ((c.getCoordenada().getX() == campo.getCoordenada().getX()) && (c.getCoordenada().getY() == campo.getCoordenada().getY())) {
                             qtdAcer++;
@@ -42,18 +42,18 @@ public abstract class CarroCombate extends Arma {
                             novoCampos.add(c);
                         }
                     }
-                    arma.setCamposArma(novoCampos);
+                    arma.setCampos(novoCampos);
                     // CONTINUA A VEZ
-                    if(novoCampos.size() == 0){
+                    if (novoCampos.isEmpty()) {
                         arma.setVivo(false);
                     }
                 }
             }
         }
         //Atira de novo
-        if(qtdInv == (i-1)){
+        if (qtdInv == (i - 1)) {
             return -1;
-        }else {
+        } else {
             return qtdAcer;
         }
     }
