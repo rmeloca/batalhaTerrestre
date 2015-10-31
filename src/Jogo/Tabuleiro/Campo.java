@@ -11,7 +11,7 @@ import Jogo.Alvo.Objeto;
  *
  * @author romulo
  */
-public class Campo {
+public final class Campo {
 
     private Objeto objeto;
     private boolean atirado;
@@ -19,21 +19,22 @@ public class Campo {
     private boolean atiravel;
     private Grelha grelha;
 
-    public Grelha getGrelha() {
-        return grelha;
-    }
+    public Campo(Coordenada coordenada, Objeto objeto) {
 
-    protected void setGrelha(Grelha grelha){
-        this.grelha = grelha;
-    }
-    
-     public Campo(Coordenada coordenada, Objeto objeto){
         setObjeto(objeto);
         setCoordenada(coordenada);
         setAtirado(false);
         setAtiravel(true);
     }
-    
+
+    public Grelha getGrelha() {
+        return grelha;
+    }
+
+    protected void setGrelha(Grelha grelha) {
+        this.grelha = grelha;
+    }
+
     public Objeto getObjeto() {
         return objeto;
     }

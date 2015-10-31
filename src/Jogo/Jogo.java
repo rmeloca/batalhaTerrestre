@@ -6,12 +6,13 @@
 package Jogo;
 
 import Jogo.Tabuleiro.Grelha;
+import java.io.Serializable;
 
 /**
  *
  * @author a1137131
  */
-public class Jogo {
+public class Jogo implements Serializable {
 
     private Estrategia estrategia1;
     private Estrategia estrategia2;
@@ -24,10 +25,6 @@ public class Jogo {
         this.jogadorRodada = jogador1;
         estrategia1 = new Estrategia(jogador1, new Grelha(dimensao));
         estrategia2 = new Estrategia(jogador2, new Grelha(dimensao));
-    }
-
-    public Jogador getJogadorProximaRodada() {
-        throw new UnsupportedOperationException();
     }
 
     public int getDimensao() {
@@ -52,4 +49,7 @@ public class Jogo {
         return estrategia2;
     }
 
+    public Jogador getJogadorProximaRodada() {
+        throw new UnsupportedOperationException();
+    }
 }

@@ -45,7 +45,7 @@ public abstract class CarroCombate extends Arma {
                     arma.setCampos(novoCampos);
                     // CONTINUA A VEZ
                     if (novoCampos.isEmpty()) {
-                        arma.setVivo(false);
+                        arma.setAtiva(false);
                     }
                 }
             }

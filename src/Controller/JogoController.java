@@ -7,6 +7,11 @@ package Controller;
 
 import Jogo.Alvo.*;
 import Jogo.Jogo;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,5 +40,22 @@ public class JogoController {
 
     public List<Arma> getArmasDisponiveis() {
         return armasDisponiveis;
+    }
+
+    public void persistirJogos() throws Exception {
+        FileOutputStream arquivo = new FileOutputStream("Jogos.dat");
+        ObjectOutputStream gravar = new ObjectOutputStream(arquivo);
+        gravar.writeObject(jogos);
+        gravar.close();
+        arquivo.flush();
+        arquivo.close();
+    }
+
+    public void resgatarJogos() throws Exception {
+        FileInputStream arquivo = new FileInputStream("Jogos.dat");
+        ObjectInputStream ler = new ObjectInputStream(arquivo);
+        this.jogos = (ArrayList<Jogo>) ler.readObject();
+        ler.close();
+        arquivo.close();
     }
 }

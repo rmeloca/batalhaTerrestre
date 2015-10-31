@@ -6,7 +6,6 @@
 package Jogo.Tabuleiro;
 
 import Jogo.Alvo.Arma;
-import Jogo.Alvo.Astros2020;
 import Jogo.Alvo.Borda;
 import Jogo.Alvo.Terra;
 import java.util.List;

@@ -17,8 +17,26 @@ import java.util.List;
  */
 public abstract class Arma extends Objeto {
 
-    private boolean vivo;
+    private boolean ativa;
     private int tamanho;
+
+    public void setAtiva(boolean ativa) {
+        this.ativa = ativa;
+    }
+
+    public boolean isAtiva() {
+        return ativa;
+    }
+
+    public int getTamanho() {
+        return tamanho;
+    }
+
+    protected void setTamanho(int tamanho) {
+        if (tamanho > 0) {
+            this.tamanho = tamanho;
+        }
+    }
 
     public boolean rotacionar() {
         if (tamanho == 3) {
@@ -81,23 +99,4 @@ public abstract class Arma extends Objeto {
         campo1.setAtiravel(atiravel2);
         campo2.setAtiravel(atiravel1);
     }
-
-    public void setVivo(boolean vivo) {
-        this.vivo = vivo;
-    }
-
-    public int getTamanho() {
-        return tamanho;
-    }
-
-    protected void setTamanho(int tamanho) {
-        if (tamanho > 0) {
-            this.tamanho = tamanho;
-        }
-    }
-
-    public boolean isVivo() {
-        return vivo;
-    }
-
 }

@@ -8,7 +8,6 @@ package Jogo;
 import Jogo.Alvo.Arma;
 import Jogo.Alvo.Astros2020;
 import Jogo.Alvo.Explosivo;
-import Jogo.Alvo.Terra;
 import Jogo.Tabuleiro.Campo;
 import Jogo.Tabuleiro.Coordenada;
 import Jogo.Tabuleiro.Grelha;
@@ -22,9 +21,9 @@ import java.util.Random;
  */
 public class Estrategia {
 
-    private List<Arma> armas;
     private Jogador jogador;
     private Grelha grelha;
+    private List<Arma> armas;
 
     public Estrategia(Jogador jogador, Grelha grelha) {
         setJogador(jogador);
