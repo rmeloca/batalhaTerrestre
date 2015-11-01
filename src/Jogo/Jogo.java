@@ -5,6 +5,8 @@
  */
 package Jogo;
 
+import Jogo.Alvo.Arma;
+import Jogo.Alvo.Explosivo;
 import Jogo.Tabuleiro.Grelha;
 import java.io.Serializable;
 
@@ -51,5 +53,18 @@ public class Jogo implements Serializable {
 
     public Jogador getJogadorProximaRodada() {
         throw new UnsupportedOperationException();
+    }
+
+    /**
+     * Realiza a explosão das bombas, considerando a tradução dos campos Utiliza
+     * a orientação a objetos, mas não é mais lento?
+     */
+    public void inicializar() {
+        for (Explosivo explosivo : estrategia1.getExplosivos()) {
+            explosivo.explodir(estrategia2.getGrelha().getCampo(explosivo.getCampos().get(0).getCoordenada()));
+        }
+        for (Explosivo explosivo : estrategia2.getExplosivos()) {
+            explosivo.explodir(estrategia1.getGrelha().getCampo(explosivo.getCampos().get(0).getCoordenada()));
+        }
     }
 }

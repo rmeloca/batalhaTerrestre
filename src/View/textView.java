@@ -83,6 +83,7 @@ public class textView {
         System.out.print("Camuflando as tropas...");
         System.out.println("Camufladas");
 
+        jogo.inicializar();
         System.out.println("Você detonou armas inimigas com sua M15");
         System.out.println("Você sofreu baixas");
 

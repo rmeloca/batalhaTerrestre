@@ -118,4 +118,14 @@ public class Estrategia {
         }
         return campos;
     }
+
+    public List<Explosivo> getExplosivos() {
+        List<Explosivo> explosivos = new ArrayList<>();
+        for (Arma arma : armas) {
+            if (arma instanceof Explosivo) {
+                explosivos.add((Explosivo) arma);
+            }
+        }
+        return explosivos;
+    }
 }
