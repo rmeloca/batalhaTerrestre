@@ -115,7 +115,6 @@ public class textView {
         Campo[] campos;
         Terra terra = new Terra();
 
-        //List<Tiro> tiros;
         System.out.println();
 
         System.out.print("#");

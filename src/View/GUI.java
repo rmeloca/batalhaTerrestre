@@ -24,15 +24,17 @@ public class GUI extends JFrame {
         jPanelMenu.add(new JButton());
         jPanelMenu.add(new JButton());
 
+        setContentPane(new painelEntrada());
         JPanel jPanel = new JPanel(new GridLayout(1, 3));
-        setContentPane(jPanel);
+//        setContentPane(jPanel);
 
         jPanel.add(new painelGrelha(new Grelha(10)));
         jPanel.add(jPanelMenu);
         jPanel.add(new painelGrelha(new Grelha(10)));
+        setTitle("Batalha Terrestre");
 
         setResizable(false);
-        setSize(1300, 500);
+        setSize(1280, 720);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
 
         setVisible(true);

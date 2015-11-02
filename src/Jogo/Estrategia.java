@@ -66,6 +66,9 @@ public class Estrategia {
             while (!deployed) {
                 campos = calcularPosicao(arma);
                 if (arma instanceof Explosivo) {
+                    //associação unidirecional
+                    //redundância controlada
+                    //ausência de bordas
                     arma.setCampos(campos);
                     deployed = true;
                 } else {

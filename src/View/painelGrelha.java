@@ -5,6 +5,8 @@
  */
 package View;
 
+import Jogo.Alvo.Terra;
+import Jogo.Tabuleiro.Campo;
 import Jogo.Tabuleiro.Grelha;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -26,7 +28,7 @@ public class painelGrelha extends JPanel {
         int dimensao = grelha.getDimensao();
         setLayout(new GridLayout(dimensao, dimensao));
         campos = new JButton[dimensao][dimensao];
-        
+
         campoActionListener = new ActionListener() {
 
             @Override
@@ -35,13 +37,22 @@ public class painelGrelha extends JPanel {
             }
         };
 
-        for (int i = 0; i < 10; i++) {
-            for (int j = 0; j < 10; j++) {
-                campos[i][j] = new JButton();
-                campos[i][j].addActionListener(campoActionListener);
-                campos[i][j].setIcon(null);
-                campos[i][j].setText("T");
-                add(campos[i][j]);
+        Terra terra = new Terra();
+        Campo campo;
+        JButton btnCampo;
+        for (int i = 0; i < grelha.getDimensao(); i++) {
+            for (int j = 0; j < grelha.getDimensao(); j++) {
+                btnCampo = campos[i][j];
+                campo = grelha.getCampos()[i][j];
+                btnCampo = new JButton();
+                btnCampo.addActionListener(campoActionListener);
+                btnCampo.setIcon(null);
+                if (campo.foiAtirado()) {
+                    btnCampo.setText(campo.getObjeto().toString());
+                } else {
+                    btnCampo.setText(terra.toString());
+                }
+                add(btnCampo);
             }
         }
 
