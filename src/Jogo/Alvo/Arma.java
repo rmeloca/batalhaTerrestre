@@ -75,6 +75,46 @@ public abstract class Arma extends Objeto {
             novaLista.add(novoCampoSup);
             campos = novaLista;
 
+            return true;
+        } else if (tamanho == 2) {
+            Campo campoInf = campos.get(0);
+            Campo campoSup = campos.get(1);
+
+            Grelha grelha = campoInf.getGrelha();
+
+            Coordenada coordenada = campoInf.getCoordenada();
+            Campo novoCampoSup;
+            Campo todosCampos[][];
+
+            if ((campoSup.getCoordenada().getX() == campoInf.getCoordenada().getX())) {
+                todosCampos = grelha.getCampos();
+                novoCampoSup = todosCampos[(coordenada.getX() - 1)][(coordenada.getY() + 1)];
+
+                Objeto obj1 = todosCampos[novoCampoSup.getCoordenada().getX() + 1][novoCampoSup.getCoordenada().getY() + 1].getObjeto();
+                Objeto obj2 = todosCampos[novoCampoSup.getCoordenada().getX()][novoCampoSup.getCoordenada().getY() + 1].getObjeto();
+                Objeto obj3 = todosCampos[novoCampoSup.getCoordenada().getX() - 1][novoCampoSup.getCoordenada().getY() + 1].getObjeto();
+
+            } else {
+                todosCampos = grelha.getCampos();
+                novoCampoSup = todosCampos[(coordenada.getX() + 1)][(coordenada.getY() - 1)];
+
+                Objeto obj1 = todosCampos[novoCampoSup.getCoordenada().getX() + 1][novoCampoSup.getCoordenada().getY() + 1].getObjeto();
+                Objeto obj2 = todosCampos[novoCampoSup.getCoordenada().getX() + 1][novoCampoSup.getCoordenada().getY()].getObjeto();
+                Objeto obj3 = todosCampos[novoCampoSup.getCoordenada().getX() + 1][novoCampoSup.getCoordenada().getY() - 1].getObjeto();
+            }
+            if (!(novoCampoSup.getObjeto() instanceof Terra)) {
+                return false;
+            } else if (true) {
+
+            }
+
+            trocarCampos(campoSup, novoCampoSup);
+            List<Campo> novaLista = new ArrayList<>();
+            novaLista.add(campoInf);
+            novaLista.add(novoCampoSup);
+            campos = novaLista;
+
+            return true;
         }
 
         return true;
