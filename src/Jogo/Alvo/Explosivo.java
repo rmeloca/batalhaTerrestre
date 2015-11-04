@@ -17,33 +17,33 @@ public abstract class Explosivo extends Arma {
 
     public int explodir(Campo campo) {
         Objeto objeto = campo.getObjeto();
-        
-        if(objeto instanceof Arma){
+
+        if (objeto instanceof Arma) {
             Arma arma = (Arma) objeto;
-            if(arma instanceof CarroCombate){
+            if (arma instanceof CarroCombate) {
                 campo.setAtirado(true);
                 campo.setAtiravel(false);
-                if(objeto.getCampos().size() == 1){
-                    
+                if (objeto.getCampos().size() == 1) {
+
                     Grelha grelha = campo.getGrelha();
-                    
-                    Coordenada coordenada = new Coordenada((campo.getCoordenada().getX()+1), campo.getCoordenada().getY());
+
+                    Coordenada coordenada = new Coordenada((campo.getCoordenada().getX() + 1), campo.getCoordenada().getY());
                     grelha.getCampo(coordenada).setAtiravel(false);
-                    
-                    coordenada = new Coordenada((campo.getCoordenada().getX()-1), campo.getCoordenada().getY());
+
+                    coordenada = new Coordenada((campo.getCoordenada().getX() - 1), campo.getCoordenada().getY());
                     grelha.getCampo(coordenada).setAtiravel(false);
-                    
-                    coordenada = new Coordenada(campo.getCoordenada().getX(), (campo.getCoordenada().getY())+1);
+
+                    coordenada = new Coordenada(campo.getCoordenada().getX(), (campo.getCoordenada().getY()) + 1);
                     grelha.getCampo(coordenada).setAtiravel(false);
-                    
-                    coordenada = new Coordenada(campo.getCoordenada().getX(), (campo.getCoordenada().getY())-1);
+
+                    coordenada = new Coordenada(campo.getCoordenada().getX(), (campo.getCoordenada().getY()) - 1);
                     grelha.getCampo(coordenada).setAtiravel(false);
-                
+
                 }
-            return 1;
+                return 1;
             }
         }
-        
+
         return 0;
     }
 }

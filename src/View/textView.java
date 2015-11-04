@@ -36,6 +36,7 @@ public class textView {
         Jogo jogo = new Jogo(10, jogador1, jogador2);
         jogoController.addJogo(jogo);
         System.out.println("Diplomacia esgotada");
+        System.out.println("Comandante, defenda o seu território contra as forças inimigas");
 
         System.out.println(jogador1.getNome() + ", escolha suas armas");
 
@@ -89,8 +90,8 @@ public class textView {
 
         imprimirJogo(jogo);
 
-        JOptionPane.showInputDialog("Qual coordenada, comandate " + jogador1.getNome() + "?");
-        JOptionPane.showInputDialog("Qual coordenada, comandate " + jogador2.getNome() + "?");
+        JOptionPane.showInputDialog("Qual coordenada, comandante " + jogador1.getNome() + "?");
+        JOptionPane.showInputDialog("Qual coordenada, comandante " + jogador2.getNome() + "?");
     }
 
     public static void imprimirGrelha(Grelha grelha) {
