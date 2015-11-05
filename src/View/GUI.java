@@ -5,12 +5,24 @@
  */
 package View;
 
+import Controller.JogoController;
+import Jogo.Alvo.Astros2020;
+import Jogo.Alvo.Guarani;
+import Jogo.Alvo.L118;
+import Jogo.Alvo.M15;
+import Jogo.Alvo.M60Patton;
+import Jogo.Jogador;
+import Jogo.Jogo;
 import Jogo.Tabuleiro.Grelha;
 import java.awt.BorderLayout;
+import java.awt.Container;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
 
 /**
  *
@@ -19,26 +31,8 @@ import javax.swing.JPanel;
 public class GUI extends JFrame {
 
     public GUI() {
-        JPanel painelPrincipal;
-        JPanel jPanelMenuWest;
-        JPanel jPanelConfronto;
-
-        painelPrincipal = new JPanel(new BorderLayout());
-
-        setContentPane(painelPrincipal);
+        setContentPane(new PainelEntrada());
         setTitle("Batalha Terrestre");
-
-        jPanelMenuWest = new JPanel(new GridLayout(3, 1));
-        jPanelMenuWest.add(new JButton());
-        jPanelMenuWest.add(new JButton());
-        jPanelMenuWest.add(new JButton());
-
-        jPanelConfronto = new JPanel(new GridLayout(1, 2));
-        jPanelConfronto.add(new painelGrelha(new Grelha(10)));
-        jPanelConfronto.add(new painelGrelha(new Grelha(10)));
-
-        painelPrincipal.add(jPanelConfronto, BorderLayout.CENTER);
-        painelPrincipal.add(jPanelMenuWest, BorderLayout.WEST);
 
         setResizable(false);
         setSize(1280, 720);

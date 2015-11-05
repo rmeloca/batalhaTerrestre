@@ -17,7 +17,7 @@ import javax.swing.JOptionPane;
  *
  * @author romulo
  */
-public class textView {
+public class TextView {
 
     private static JogoController jogoController;
 
@@ -65,7 +65,6 @@ public class textView {
         jogo.getEstrategia2().addArma(new M15());
         jogo.getEstrategia2().addArma(new M15());
         jogo.getEstrategia2().addArma(new Astros2020());
-        jogo.getEstrategia2().addArma(new Astros2020());
         jogo.getEstrategia2().addArma(new M60Patton());
         jogo.getEstrategia2().addArma(new M60Patton());
         jogo.getEstrategia2().addArma(new L118());
@@ -78,7 +77,7 @@ public class textView {
 
         System.out.println(jogador2.getNome() + ", ajuste seus explosivos");
 
-        imprimirGrelha(jogo.getEstrategia1().getGrelha());
+        imprimirGrelha(jogo.getEstrategia2().getGrelha());
 
         System.out.println("Confronto avistado");
         System.out.print("Camuflando as tropas...");
@@ -135,10 +134,10 @@ public class textView {
             for (int j = 0; j < jogo.getDimensao(); j++) {
                 campo = campos[j];
                 System.out.print(" ");
-                if (campo.foiAtirado()) {
-                    System.out.print(campo.getObjeto().toString());
-                } else {
+                if (campo.isAtiravel()) {
                     System.out.print(terra.toString());
+                } else {
+                    System.out.print(campo.getObjeto().toString());
                 }
             }
             System.out.print("\t");

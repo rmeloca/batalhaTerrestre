@@ -49,6 +49,7 @@ public final class Campo {
 
     public void setAtirado(boolean atirado) {
         this.atirado = atirado;
+        setAtiravel(!atirado);
     }
 
     public Coordenada getCoordenada() {

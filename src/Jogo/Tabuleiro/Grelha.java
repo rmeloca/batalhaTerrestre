@@ -8,6 +8,7 @@ package Jogo.Tabuleiro;
 import Jogo.Alvo.Arma;
 import Jogo.Alvo.Borda;
 import Jogo.Alvo.Terra;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -21,17 +22,28 @@ public class Grelha {
 
     /**
      * Inicializa a grelha. New Terra() pode ser excesso de lixo de memória.
-     * Instancia todos os campos e os acopla à grelha
+     * Instancia todos os campos e os acopla à grelha Inicializa todos os campos
+     * com terra e os acopla
      *
      * @param dimensao corresponde ao tamanho da grelha
      */
     public Grelha(int dimensao) {
+        Terra terra;
+        List<Campo> camposObjeto;
+        Campo campo;
+
         setDimensao(dimensao);
         campos = new Campo[dimensao][dimensao];
         for (int i = 0; i < dimensao; i++) {
             for (int j = 0; j < dimensao; j++) {
-                campos[i][j] = new Campo(new Coordenada(i, j), new Terra());
-                campos[i][j].setGrelha(this);
+                terra = new Terra();
+                camposObjeto = new ArrayList<>();
+                campo = new Campo(new Coordenada(i, j), terra);
+                campos[i][j] = campo;
+                campo.setGrelha(this);
+
+                camposObjeto.add(campo);
+                terra.setCampos(camposObjeto);
             }
         }
     }

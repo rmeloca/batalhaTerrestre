@@ -17,33 +17,26 @@ public abstract class Explosivo extends Arma {
 
     public int explodir(Campo campo) {
         Objeto objeto = campo.getObjeto();
+        campo.setAtirado(true);
+        campo.setAtiravel(false);
 
-        if (objeto instanceof Arma) {
+        if (objeto instanceof CarroCombate) {
             Arma arma = (Arma) objeto;
-            if (arma instanceof CarroCombate) {
-                campo.setAtirado(true);
-                campo.setAtiravel(false);
-                if (objeto.getCampos().size() == 1) {
-
-                    Grelha grelha = campo.getGrelha();
-
-                    Coordenada coordenada = new Coordenada((campo.getCoordenada().getX() + 1), campo.getCoordenada().getY());
-                    grelha.getCampo(coordenada).setAtiravel(false);
-
-                    coordenada = new Coordenada((campo.getCoordenada().getX() - 1), campo.getCoordenada().getY());
-                    grelha.getCampo(coordenada).setAtiravel(false);
-
-                    coordenada = new Coordenada(campo.getCoordenada().getX(), (campo.getCoordenada().getY()) + 1);
-                    grelha.getCampo(coordenada).setAtiravel(false);
-
-                    coordenada = new Coordenada(campo.getCoordenada().getX(), (campo.getCoordenada().getY()) - 1);
-                    grelha.getCampo(coordenada).setAtiravel(false);
-
-                }
-                return 1;
+            if (arma.getTamanho() == 1) {
+                arma.setAtiva(false);
+                Grelha grelha = campo.getGrelha();
+                Coordenada coordenada = campo.getCoordenada();
+                grelha.getCampo(coordenada.north()).setAtiravel(false);
+                grelha.getCampo(coordenada.northeast()).setAtiravel(false);
+                grelha.getCampo(coordenada.northwest()).setAtiravel(false);
+                grelha.getCampo(coordenada.west()).setAtiravel(false);
+                grelha.getCampo(coordenada.east()).setAtiravel(false);
+                grelha.getCampo(coordenada.south()).setAtiravel(false);
+                grelha.getCampo(coordenada.southeast()).setAtiravel(false);
+                grelha.getCampo(coordenada.southwest()).setAtiravel(false);
             }
+            return 1;
         }
-
         return 0;
     }
 }

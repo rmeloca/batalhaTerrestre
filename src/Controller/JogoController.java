@@ -21,8 +21,8 @@ import java.util.List;
  */
 public class JogoController {
 
-    List<Jogo> jogos;
-    List<Arma> armasDisponiveis;
+    private List<Jogo> jogos;
+    private List<Arma> armasDisponiveis;
 
     public JogoController() {
         jogos = new ArrayList<>();
@@ -38,6 +38,10 @@ public class JogoController {
         this.jogos.add(jogo);
     }
 
+    public List<Jogo> getJogos() {
+        return jogos;
+    }
+
     public List<Arma> getArmasDisponiveis() {
         return armasDisponiveis;
     }
@@ -51,7 +55,7 @@ public class JogoController {
         arquivo.close();
     }
 
-    public void resgatarJogos() throws Exception {
+    public void recuperarJogos() throws Exception {
         FileInputStream arquivo = new FileInputStream("Jogos.dat");
         ObjectInputStream ler = new ObjectInputStream(arquivo);
         this.jogos = (ArrayList<Jogo>) ler.readObject();

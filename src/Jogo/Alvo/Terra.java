@@ -13,6 +13,9 @@ public final class Terra extends Objeto {
 
     @Override
     public String toString() {
+        if (campos != null && campos.get(0).foiAtirado()) {
+            return "S";
+        }
         return "T";
     }
 
