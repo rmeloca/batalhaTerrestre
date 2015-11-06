@@ -7,6 +7,7 @@ package Jogo;
 
 import Jogo.Alvo.Arma;
 import Jogo.Alvo.Astros2020;
+import Jogo.Alvo.CarroCombate;
 import Jogo.Alvo.Explosivo;
 import Jogo.Tabuleiro.Campo;
 import Jogo.Tabuleiro.Coordenada;
@@ -37,6 +38,26 @@ public class Estrategia {
 
     public List<Arma> getArmas() {
         return armas;
+    }
+
+    public List<CarroCombate> getCarrosCombate() {
+        List<CarroCombate> carroCombates = new ArrayList<>();
+        for (Arma arma : armas) {
+            if (arma instanceof CarroCombate) {
+                carroCombates.add((CarroCombate) arma);
+            }
+        }
+        return carroCombates;
+    }
+
+    public List<Explosivo> getExplosivos() {
+        List<Explosivo> explosivos = new ArrayList<>();
+        for (Arma arma : armas) {
+            if (arma instanceof Explosivo) {
+                explosivos.add((Explosivo) arma);
+            }
+        }
+        return explosivos;
     }
 
     public void addArma(Arma arma) {
@@ -120,15 +141,5 @@ public class Estrategia {
             }
         }
         return campos;
-    }
-
-    public List<Explosivo> getExplosivos() {
-        List<Explosivo> explosivos = new ArrayList<>();
-        for (Arma arma : armas) {
-            if (arma instanceof Explosivo) {
-                explosivos.add((Explosivo) arma);
-            }
-        }
-        return explosivos;
     }
 }
