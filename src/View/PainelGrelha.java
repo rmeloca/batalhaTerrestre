@@ -107,10 +107,12 @@ public class PainelGrelha extends JPanel {
             for (int j = 0; j < grelha.getDimensao(); j++) {
                 btnCampo = campos[i][j];
                 campo = grelha.getCampos()[i][j];
-                btnCampo.setIcon(new ImageIcon(campo.getObjeto().getImagem()));
                 if (campo.isAtiravel()) {
                     btnCampo.setEnabled(true);
                     btnCampo.setIcon(new ImageIcon(terra.getImagem()));
+                } else {
+                    btnCampo.setEnabled(false);
+                    btnCampo.setIcon(new ImageIcon(campo.getObjeto().getImagem()));
                 }
             }
         }
