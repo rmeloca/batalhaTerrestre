@@ -39,7 +39,7 @@ public class Jogo implements Serializable {
     }
 
     public Jogador getVencedor() {
-        throw new UnsupportedOperationException();
+        return estrategia1.getArmas().isEmpty() ? estrategia1.getJogador() : estrategia2.getJogador();
     }
 
     public Estrategia getEstrategia1() {

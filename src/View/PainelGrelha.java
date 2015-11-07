@@ -98,7 +98,7 @@ public class PainelGrelha extends JPanel {
         }
     }
 
-    public void desabilitaGrelha() {
+    public void desabilitarGrelha() {
         JButton btnCampo;
         Campo campo;
         Terra terra = new Terra();

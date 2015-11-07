@@ -39,15 +39,15 @@ public class PainelConfronto extends JPanel {
         painelPrincipal.add(painelGrelha2);
 
         painelGrelha1.atualizarGrelha();
-        painelGrelha2.desabilitaGrelha();
-        atualizarToolbar();
+        painelGrelha2.desabilitarGrelha();
+        atualizarToolBar();
 
         add(painelPrincipal, BorderLayout.CENTER);
         add(toolBar, BorderLayout.NORTH);
 
     }
 
-    private void atualizarToolbar() {
+    private void atualizarToolBar() {
         toolBar.removeAll();
         for (CarroCombate carrosCombate : jogo.getEstrategia(jogo.getJogadorProximaRodada()).getCarrosCombate()) {
             toolBar.add(new JButton(carrosCombate.toString()));
