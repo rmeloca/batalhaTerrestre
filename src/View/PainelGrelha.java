@@ -55,8 +55,6 @@ public class PainelGrelha extends JPanel {
                 campo = grelha.getCampo(coordenada);
                 camposSelecionados.add(campo);
 
-                campo.setAtirado(true);
-
                 guarani.atirar(camposSelecionados);
                 btnCampo = campos[coordenada.getX()][coordenada.getY()];
                 btnCampo.setEnabled(false);
