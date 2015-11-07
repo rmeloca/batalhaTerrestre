@@ -133,8 +133,11 @@ public class Grelha {
     }
 
     public void setInativo(Campo campo) {
-        if(campo != null){
+        if (campo != null) {
             campo.setAtiravel(false);
+            if (campo.getObjeto() instanceof Borda) {
+                campo.getObjeto().setImagem("borda.png");
+            }
         }
     }
 
