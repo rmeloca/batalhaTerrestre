@@ -133,7 +133,9 @@ public class Grelha {
     }
 
     public void setInativo(Campo campo) {
-        campo.setAtiravel(false);
+        if(campo != null){
+            campo.setAtiravel(false);
+        }
     }
 
     public void setBordasInativas(List<Campo> listaCampos) {
