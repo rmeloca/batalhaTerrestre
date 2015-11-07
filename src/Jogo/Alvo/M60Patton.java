@@ -13,6 +13,7 @@ public class M60Patton extends CarroCombate {
 
     public M60Patton() {
         setTamanho(3);
+        setImagem("80_m60patton.png");
     }
 
     @Override

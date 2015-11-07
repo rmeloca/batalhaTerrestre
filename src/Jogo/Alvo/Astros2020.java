@@ -13,6 +13,7 @@ public class Astros2020 extends CarroCombate {
 
     public Astros2020() {
         setTamanho(4);
+        setImagem("80_astros2020.png");
     }
 
     @Override

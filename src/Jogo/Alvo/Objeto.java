@@ -15,10 +15,10 @@ import java.util.List;
 public abstract class Objeto {
 
     String imagem;
-    List<Campo> campos;    
-    
+    List<Campo> campos;
+
     public String getImagem() {
-        return imagem;
+        return "src/Icon/" + imagem;
     }
 
     public void setImagem(String imagem) {
@@ -32,7 +32,7 @@ public abstract class Objeto {
     public void setCampos(List<Campo> campos) {
         this.campos = campos;
     }
-    
+
     @Override
     public abstract String toString();
 }

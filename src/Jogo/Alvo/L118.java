@@ -13,6 +13,7 @@ public class L118 extends CarroCombate {
 
     public L118() {
         setTamanho(1);
+        setImagem("80_l118.png");
     }
 
     @Override

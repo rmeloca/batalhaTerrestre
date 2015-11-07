@@ -13,6 +13,7 @@ public class Guarani extends CarroCombate {
 
     public Guarani() {
         setTamanho(2);
+        setImagem("80_guarani.png");
     }
 
     @Override

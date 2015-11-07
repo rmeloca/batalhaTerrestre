@@ -11,6 +11,10 @@ package Jogo.Alvo;
  */
 public final class Terra extends Objeto {
 
+    public Terra() {
+        setImagem("terra.jpg");
+    }
+
     @Override
     public String toString() {
         if (campos != null && campos.get(0).foiAtirado()) {

@@ -13,6 +13,7 @@ public final class M15 extends Explosivo {
 
     public M15() {
         setTamanho(1);
+        setImagem("80_m15.png");
     }
 
     @Override

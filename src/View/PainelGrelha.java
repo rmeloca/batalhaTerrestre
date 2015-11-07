@@ -16,6 +16,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
@@ -61,6 +62,7 @@ public class PainelGrelha extends JPanel {
                 btnCampo.setEnabled(false);
                 btnCampo.setBackground(Color.red);
                 btnCampo.setText(campo.getObjeto().toString());
+                btnCampo.setIcon(new ImageIcon(campo.getObjeto().getImagem()));
 
                 desabilitarGrelha();
                 grelhaInimiga.atualizarGrelha();
@@ -82,9 +84,11 @@ public class PainelGrelha extends JPanel {
                     btnCampo.setText(campo.getObjeto().toString());
                     btnCampo.setEnabled(false);
                     btnCampo.setBackground(Color.BLUE);
+                    btnCampo.setIcon(new ImageIcon(campo.getObjeto().getImagem()));
                 } else {
                     btnCampo.setText(terra.toString());
                     btnCampo.setBackground(Color.GRAY);
+                    btnCampo.setIcon(new ImageIcon(terra.getImagem()));
                 }
                 add(btnCampo);
             }
@@ -96,14 +100,17 @@ public class PainelGrelha extends JPanel {
     }
 
     public void atualizarGrelha() {
+        Terra terra = new Terra();
         JButton btnCampo;
         Campo campo;
         for (int i = 0; i < grelha.getDimensao(); i++) {
             for (int j = 0; j < grelha.getDimensao(); j++) {
                 btnCampo = campos[i][j];
                 campo = grelha.getCampos()[i][j];
+                btnCampo.setIcon(new ImageIcon(campo.getObjeto().getImagem()));
                 if (campo.isAtiravel()) {
                     btnCampo.setEnabled(true);
+                    btnCampo.setIcon(new ImageIcon(terra.getImagem()));
                 }
             }
         }
