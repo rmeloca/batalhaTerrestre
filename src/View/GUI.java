@@ -278,16 +278,14 @@ public class GUI extends JFrame {
         executarMusica("01 - Main Theme.wav");
 
 
-        jogo.getEstrategia1().dispoeArmas();
-        jogo.getEstrategia2().dispoeArmas();
-
-        jogo.inicializar();
-
         btnPvp.addActionListener(new ActionListener() {
 
             @Override
             public void actionPerformed(ActionEvent e) {
                 dispose();
+                jogo.getEstrategia1().dispoeArmas();
+                jogo.getEstrategia2().dispoeArmas();
+                jogo.inicializar();
                 JPanel painelConfronto = new PainelConfronto(jogoController.getJogos().get(0));
                 JFrame jFrame = new JFrame();
                 jFrame.setContentPane(painelConfronto);
@@ -296,7 +294,6 @@ public class GUI extends JFrame {
                 jFrame.setDefaultCloseOperation(EXIT_ON_CLOSE);
                 jFrame.setResizable(false);
                 jFrame.setVisible(true);
-
             }
         });
 

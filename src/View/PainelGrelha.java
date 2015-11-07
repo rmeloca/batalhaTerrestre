@@ -28,6 +28,7 @@ public class PainelGrelha extends JPanel {
     JButton[][] campos;
     ActionListener campoActionListener;
     Grelha grelha;
+    PainelGrelha grelhaInimiga;
 
     public PainelGrelha(Grelha grelha) {
         this.grelha = grelha;
@@ -53,11 +54,16 @@ public class PainelGrelha extends JPanel {
                 campo = grelha.getCampo(coordenada);
                 camposSelecionados.add(campo);
 
+                campo.setAtirado(true);
+
                 guarani.atirar(camposSelecionados);
                 btnCampo = campos[coordenada.getX()][coordenada.getY()];
                 btnCampo.setEnabled(false);
+                btnCampo.setBackground(Color.red);
                 btnCampo.setText(campo.getObjeto().toString());
 
+                desabilitarGrelha();
+                grelhaInimiga.atualizarGrelha();
             }
         };
 
@@ -74,19 +80,24 @@ public class PainelGrelha extends JPanel {
                 btnCampo.setIcon(null);
                 if (campo.foiAtirado()) {
                     btnCampo.setText(campo.getObjeto().toString());
+                    btnCampo.setEnabled(false);
+                    btnCampo.setBackground(Color.BLUE);
                 } else {
                     btnCampo.setText(terra.toString());
+                    btnCampo.setBackground(Color.GRAY);
                 }
-                btnCampo.setBackground(Color.GRAY);
                 add(btnCampo);
             }
         }
     }
 
+    public void setGrelhaInimiga(PainelGrelha grelhaInimiga) {
+        this.grelhaInimiga = grelhaInimiga;
+    }
+
     public void atualizarGrelha() {
         JButton btnCampo;
         Campo campo;
-        Terra terra = new Terra();
         for (int i = 0; i < grelha.getDimensao(); i++) {
             for (int j = 0; j < grelha.getDimensao(); j++) {
                 btnCampo = campos[i][j];
@@ -98,14 +109,11 @@ public class PainelGrelha extends JPanel {
         }
     }
 
-    public void desabilitaGrelha() {
+    public void desabilitarGrelha() {
         JButton btnCampo;
-        Campo campo;
-        Terra terra = new Terra();
         for (int i = 0; i < grelha.getDimensao(); i++) {
             for (int j = 0; j < grelha.getDimensao(); j++) {
                 btnCampo = campos[i][j];
-                campo = grelha.getCampos()[i][j];
                 btnCampo.setEnabled(false);
             }
         }
