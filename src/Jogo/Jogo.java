@@ -5,7 +5,6 @@
  */
 package Jogo;
 
-import Jogo.Alvo.Arma;
 import Jogo.Alvo.Explosivo;
 import Jogo.Tabuleiro.Grelha;
 import java.io.Serializable;
@@ -52,7 +51,19 @@ public class Jogo implements Serializable {
     }
 
     public Jogador getJogadorProximaRodada() {
-        throw new UnsupportedOperationException();
+        if (this.jogadorRodada.equals(estrategia1.getJogador())) {
+            jogadorRodada = estrategia2.getJogador();
+        } else {
+            jogadorRodada = estrategia1.getJogador();
+        }
+        return jogadorRodada;
+    }
+
+    public Estrategia getEstrategia(Jogador jogador) {
+        if (estrategia1.getJogador().equals(jogador)) {
+            return estrategia1;
+        }
+        return estrategia2;
     }
 
     /**

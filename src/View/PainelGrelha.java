@@ -27,8 +27,10 @@ public class PainelGrelha extends JPanel {
 
     JButton[][] campos;
     ActionListener campoActionListener;
+    Grelha grelha;
 
     public PainelGrelha(Grelha grelha) {
+        this.grelha = grelha;
         int dimensao = grelha.getDimensao();
         setLayout(new GridLayout(dimensao, dimensao));
         campos = new JButton[dimensao][dimensao];
@@ -81,4 +83,31 @@ public class PainelGrelha extends JPanel {
         }
     }
 
+    public void atualizarGrelha() {
+        JButton btnCampo;
+        Campo campo;
+        Terra terra = new Terra();
+        for (int i = 0; i < grelha.getDimensao(); i++) {
+            for (int j = 0; j < grelha.getDimensao(); j++) {
+                btnCampo = campos[i][j];
+                campo = grelha.getCampos()[i][j];
+                if (campo.isAtiravel()) {
+                    btnCampo.setEnabled(true);
+                }
+            }
+        }
+    }
+
+    public void desabilitaGrelha() {
+        JButton btnCampo;
+        Campo campo;
+        Terra terra = new Terra();
+        for (int i = 0; i < grelha.getDimensao(); i++) {
+            for (int j = 0; j < grelha.getDimensao(); j++) {
+                btnCampo = campos[i][j];
+                campo = grelha.getCampos()[i][j];
+                btnCampo.setEnabled(false);
+            }
+        }
+    }
 }
