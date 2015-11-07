@@ -32,6 +32,14 @@ public class Estrategia {
         this.armas = new ArrayList<>();
     }
 
+    public int calcTamanhoArmas(){
+        int tamanho = 0;
+        for(Arma a: armas){
+            tamanho += a.getTamanho();
+        }
+    return tamanho;
+    }
+    
     public Grelha getGrelha() {
         return grelha;
     }
