@@ -15,12 +15,14 @@ import Jogo.Estrategia;
 import Jogo.Jogador;
 import Jogo.Jogo;
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import sun.audio.AudioPlayer;
@@ -37,6 +39,9 @@ public class GUI extends JFrame {
     private JogoController jogoController;
     ActionListener addArma1;
     ActionListener addArma2;
+
+    int qtdN1 = 0;
+    int qtdN2 = 0;
 
     JButton btnM1;
     JButton btnM2;
@@ -78,12 +83,28 @@ public class GUI extends JFrame {
         lblQtdArmas1.setText("0");
         lblQtdArmas1.setBackground(Color.white);
         lblQtdArmas1.setBounds(305, 200, 50, 50);
+        Font labelFont = lblQtdArmas1.getFont();
+        String labelText = lblQtdArmas1.getText();
+
+        int stringWidth = lblQtdArmas1.getFontMetrics(labelFont).stringWidth(labelText);
+        int componentWidth = lblQtdArmas1.getWidth();
+
+// Find out how much the font can grow in width.
+        double widthRatio = (double) componentWidth / (double) stringWidth;
+
+        int newFontSize = (int) (labelFont.getSize() * widthRatio) / 2;
+        int componentHeight = lblQtdArmas1.getHeight();
+
+// Pick a new font size so it will not be larger than the height of label.
+        int fontSizeToUse = Math.min(newFontSize, componentHeight);
+        lblQtdArmas1.setFont(new Font(labelFont.getName(), Font.PLAIN, fontSizeToUse));
         add(lblQtdArmas1);
 
         JLabel lblQtdArmas2 = new JLabel("0");
         lblQtdArmas2.setText("0");
         lblQtdArmas2.setBackground(Color.white);
         lblQtdArmas2.setBounds(955, 200, 50, 50);
+        lblQtdArmas2.setFont(new Font(labelFont.getName(), Font.PLAIN, fontSizeToUse));
         add(lblQtdArmas2);
 
         addArma1 = new ActionListener() {
@@ -119,6 +140,7 @@ public class GUI extends JFrame {
                     lblQtdArmas1.setText(tamanho + "");
                 } else if (arg.equals("N")) {
                     tamanho += 1;
+                    qtdN1++;
                     M15 n = new M15();
                     n.setAtiva(true);
                     est.addArma(n);
@@ -132,6 +154,9 @@ public class GUI extends JFrame {
                 }
                 if (tamanho > 8) {
                     btnG1.setEnabled(false);
+                    if (qtdN1 == 9) {
+                        btnN1.setEnabled(false);
+                    }
                 }
                 if (tamanho > 9) {
                     btnL1.setEnabled(false);
@@ -173,6 +198,7 @@ public class GUI extends JFrame {
                     lblQtdArmas2.setText(tamanho + "");
                 } else if (arg.equals("N")) {
                     tamanho += 1;
+                    qtdN2++;
                     M15 n = new M15();
                     n.setAtiva(true);
                     est.addArma(n);
@@ -186,6 +212,9 @@ public class GUI extends JFrame {
                 }
                 if (tamanho > 8) {
                     btnG2.setEnabled(false);
+                    if (qtdN2 == 9) {
+                        btnN2.setEnabled(false);
+                    }
                 }
                 if (tamanho > 9) {
                     btnL2.setEnabled(false);
@@ -195,57 +224,67 @@ public class GUI extends JFrame {
             }
         };
 
-        btnM1 = new JButton("M60Patton (3)");
+        btnM1 = new JButton();
         btnM1.addActionListener(addArma1);
         btnM1.setActionCommand("M");
+        btnM1.setIcon(new ImageIcon(new M60Patton().getImagem()));
 
-        btnM2 = new JButton("M60Patton (3)");
+        btnM2 = new JButton();
         btnM2.addActionListener(addArma2);
         btnM2.setActionCommand("M");
+        btnM2.setIcon(new ImageIcon(new M60Patton().getImagem()));
 
-        btnA1 = new JButton("Astros2020 (4)");
+        btnA1 = new JButton();
         btnA1.addActionListener(addArma1);
         btnA1.setActionCommand("A");
+        btnA1.setIcon(new ImageIcon(new Astros2020().getImagem()));
 
-        btnA2 = new JButton("Astros2020 (4)");
+        btnA2 = new JButton();
         btnA2.addActionListener(addArma2);
         btnA2.setActionCommand("A");
+        btnA2.setIcon(new ImageIcon(new Astros2020().getImagem()));
 
-        btnL1 = new JButton("L118 (1)");
+        btnL1 = new JButton();
         btnL1.addActionListener(addArma1);
         btnL1.setActionCommand("L");
+        btnL1.setIcon(new ImageIcon(new L118().getImagem()));
 
-        btnL2 = new JButton("L118 (1)");
+        btnL2 = new JButton();
         btnL2.addActionListener(addArma2);
         btnL2.setActionCommand("L");
+        btnL2.setIcon(new ImageIcon(new L118().getImagem()));
 
-        btnG1 = new JButton("Guarani (2)");
+        btnG1 = new JButton();
         btnG1.addActionListener(addArma1);
         btnG1.setActionCommand("G");
+        btnG1.setIcon(new ImageIcon(new Guarani().getImagem()));
 
-        btnG2 = new JButton("Guarani (2)");
+        btnG2 = new JButton();
         btnG2.addActionListener(addArma2);
         btnG2.setActionCommand("G");
+        btnG2.setIcon(new ImageIcon(new Guarani().getImagem()));
 
-        btnN1 = new JButton("Mina M15 (1)");
+        btnN1 = new JButton();
         btnN1.addActionListener(addArma1);
         btnN1.setActionCommand("N");
+        btnN1.setIcon(new ImageIcon(new M15().getImagem()));
 
-        btnN2 = new JButton("Mina M15 (1)");
+        btnN2 = new JButton();
         btnN2.addActionListener(addArma2);
         btnN2.setActionCommand("N");
+        btnN2.setIcon(new ImageIcon(new M15().getImagem()));
 
-        btnM1.setBounds(200, 300, 100, 50);
-        btnA1.setBounds(330, 300, 100, 50);
-        btnL1.setBounds(150, 400, 100, 50);
-        btnG1.setBounds(260, 400, 100, 50);
-        btnN1.setBounds(370, 400, 100, 50);
+        btnM1.setBounds(200, 300, 80, 80);
+        btnA1.setBounds(330, 300, 80, 80);
+        btnL1.setBounds(150, 400, 80, 80);
+        btnG1.setBounds(260, 400, 80, 80);
+        btnN1.setBounds(370, 400, 80, 80);
 
-        btnM2.setBounds(850, 300, 100, 50);
-        btnA2.setBounds(980, 300, 100, 50);
-        btnL2.setBounds(800, 400, 100, 50);
-        btnG2.setBounds(910, 400, 100, 50);
-        btnN2.setBounds(1020, 400, 100, 50);
+        btnM2.setBounds(850, 300, 80, 80);
+        btnA2.setBounds(980, 300, 80, 80);
+        btnL2.setBounds(800, 400, 80, 80);
+        btnG2.setBounds(910, 400, 80, 80);
+        btnN2.setBounds(1020, 400, 80, 80);
 
         add(btnM1);
         add(btnA1);
@@ -285,7 +324,7 @@ public class GUI extends JFrame {
                     String nome2 = jtfJogador2.getText();
                     jogador1.setNome(nome1);
                     jogador2.setNome(nome2);
-                    
+
                     dispose();
                     jogo.getEstrategia1().dispoeArmas();
                     jogo.getEstrategia2().dispoeArmas();
@@ -298,6 +337,8 @@ public class GUI extends JFrame {
                     jFrame.setDefaultCloseOperation(EXIT_ON_CLOSE);
                     jFrame.setResizable(false);
                     jFrame.setVisible(true);
+                } else {
+                    JOptionPane.showMessageDialog(null, "É necessário utilizar os 10 espaços disponíveis");
                 }
             }
         });
