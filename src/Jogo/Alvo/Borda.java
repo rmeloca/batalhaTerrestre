@@ -12,7 +12,7 @@ package Jogo.Alvo;
 public final class Borda extends Objeto {
 
     public Borda() {
-        setImagem("borda.jpg");
+        setImagem("80_terra.png");
     }
 
     @Override

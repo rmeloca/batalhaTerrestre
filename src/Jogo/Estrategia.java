@@ -32,14 +32,14 @@ public class Estrategia {
         this.armas = new ArrayList<>();
     }
 
-    public int calcTamanhoArmas(){
+    public int calcTamanhoArmas() {
         int tamanho = 0;
-        for(Arma a: armas){
+        for (Arma a : armas) {
             tamanho += a.getTamanho();
         }
-    return tamanho;
+        return tamanho;
     }
-    
+
     public Grelha getGrelha() {
         return grelha;
     }
@@ -133,13 +133,13 @@ public class Estrategia {
 
         if (arma instanceof Astros2020) {
             campo = grelha.getCampo(base.getCoordenada().south());
-            if (campo == null) {
+            if (campo == null || campo.getCoordenada().equals(base.getCoordenada())) {
                 return null;
             }
             campos.add(campo);
 
             campo = grelha.getCampo(base.getCoordenada().east());
-            if (campo == null) {
+            if (campo == null || campo.getCoordenada().equals(base.getCoordenada())) {
                 return null;
             }
             campos.add(campo);

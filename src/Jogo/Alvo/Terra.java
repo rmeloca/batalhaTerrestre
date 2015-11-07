@@ -12,7 +12,7 @@ package Jogo.Alvo;
 public final class Terra extends Objeto {
 
     public Terra() {
-        setImagem("terra.jpg");
+        setImagem("80_terra.png");
     }
 
     @Override
