@@ -131,4 +131,40 @@ public class Grelha {
         System.gc();
         return true;
     }
+
+    public void setInativo(Campo campo) {
+        campo.setAtiravel(false);
+    }
+
+    public void setBordasInativas(List<Campo> listaCampos) {
+        for (Campo campo : listaCampos) {
+
+            Coordenada coordenada;
+
+            coordenada = campo.getCoordenada().north();
+            setInativo(getCampo(coordenada));
+
+            coordenada = campo.getCoordenada().northwest();
+            setInativo(getCampo(coordenada));
+
+            coordenada = campo.getCoordenada().northeast();
+            setInativo(getCampo(coordenada));
+
+            coordenada = campo.getCoordenada().west();
+            setInativo(getCampo(coordenada));
+
+            coordenada = campo.getCoordenada().east();
+            setInativo(getCampo(coordenada));
+
+            coordenada = campo.getCoordenada().south();
+            setInativo(getCampo(coordenada));
+
+            coordenada = campo.getCoordenada().southwest();
+            setInativo(getCampo(coordenada));
+
+            coordenada = campo.getCoordenada().southeast();
+            setInativo(getCampo(coordenada));
+        }
+
+    }
 }
