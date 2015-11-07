@@ -14,11 +14,8 @@ import Jogo.Alvo.M60Patton;
 import Jogo.Jogador;
 import Jogo.Jogo;
 import java.awt.Color;
-import java.awt.Label;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.FileInputStream;
-import java.io.IOException;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -48,26 +45,26 @@ public class GUI extends JFrame {
 
         JTextField jtfJogador1;
         jtfJogador1 = new JTextField("Jogador 1");
-        jtfJogador1.setBounds(245,100,150,50);
+        jtfJogador1.setBounds(245, 100, 150, 50);
         add(jtfJogador1);
-        
+
         JTextField jtfJogador2;
         jtfJogador2 = new JTextField("Jogador 2");
-        jtfJogador2.setBounds(885,100,150,50);
+        jtfJogador2.setBounds(885, 100, 150, 50);
         add(jtfJogador2);
-        
+
         JLabel lblQtdArmas1 = new JLabel("0");
         lblQtdArmas1.setText("0");
         lblQtdArmas1.setBackground(Color.white);
         lblQtdArmas1.setBounds(305, 200, 50, 50);
         add(lblQtdArmas1);
-        
+
         JLabel lblQtdArmas2 = new JLabel("0");
         lblQtdArmas2.setText("0");
         lblQtdArmas2.setBackground(Color.white);
         lblQtdArmas2.setBounds(955, 200, 50, 50);
         add(lblQtdArmas2);
-        
+
         JButton btnM1 = new JButton("M60Patton (3)");
         JButton btnM2 = new JButton("M60Patton (3)");
         JButton btnA1 = new JButton("Astros2020 (4)");
@@ -78,41 +75,37 @@ public class GUI extends JFrame {
         JButton btnG2 = new JButton("Guarani (2)");
         JButton btnN1 = new JButton("Mina M15 (1)");
         JButton btnN2 = new JButton("Mina M15 (1)");
-        
+
         btnM1.setBounds(200, 300, 100, 50);
         btnA1.setBounds(330, 300, 100, 50);
         btnL1.setBounds(150, 400, 100, 50);
         btnG1.setBounds(260, 400, 100, 50);
         btnN1.setBounds(370, 400, 100, 50);
-        
+
         btnM2.setBounds(850, 300, 100, 50);
         btnA2.setBounds(980, 300, 100, 50);
         btnL2.setBounds(800, 400, 100, 50);
         btnG2.setBounds(910, 400, 100, 50);
         btnN2.setBounds(1020, 400, 100, 50);
-        
+
         add(btnM1);
         add(btnA1);
         add(btnL1);
         add(btnG1);
         add(btnN1);
-        
+
         add(btnM2);
         add(btnA2);
         add(btnL2);
         add(btnG2);
         add(btnN2);
-        
+
 //        
 //        int vida1 = 10, vida2 = 10;
 //        
 //        while(vida1 > 0){
 //           
 //        }
-        
-        
-        
-        
         ImageIcon imagem = new ImageIcon("src/Icon/entrada.png");
         lblImagem = new JLabel(imagem);
         lblImagem.setBounds(0, 0, imagem.getIconWidth(), imagem.getIconHeight());
@@ -136,8 +129,6 @@ public class GUI extends JFrame {
         jogo.getEstrategia1().addArma(new L118());
         jogo.getEstrategia1().addArma(new L118());
 
-        jogo.getEstrategia1().dispoeArmas();
-
         jogo.getEstrategia2().addArma(new Guarani());
         jogo.getEstrategia2().addArma(new M15());
         jogo.getEstrategia2().addArma(new M15());
@@ -147,15 +138,14 @@ public class GUI extends JFrame {
         jogo.getEstrategia2().addArma(new M60Patton());
         jogo.getEstrategia2().addArma(new L118());
 
-        jogo.getEstrategia2().dispoeArmas();
-
-        jogo.inicializar();
-
         btnPvp.addActionListener(new ActionListener() {
 
             @Override
             public void actionPerformed(ActionEvent e) {
                 dispose();
+                jogo.getEstrategia1().dispoeArmas();
+                jogo.getEstrategia2().dispoeArmas();
+                jogo.inicializar();
                 JPanel painelConfronto = new PainelConfronto(jogoController.getJogos().get(0));
                 JFrame jFrame = new JFrame();
                 jFrame.setContentPane(painelConfronto);
@@ -164,7 +154,6 @@ public class GUI extends JFrame {
                 jFrame.setDefaultCloseOperation(EXIT_ON_CLOSE);
                 jFrame.setResizable(false);
                 jFrame.setVisible(true);
-
             }
         });
 

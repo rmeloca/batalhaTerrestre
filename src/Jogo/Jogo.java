@@ -5,6 +5,7 @@
  */
 package Jogo;
 
+import Jogo.Alvo.Arma;
 import Jogo.Alvo.Explosivo;
 import Jogo.Tabuleiro.Grelha;
 import java.io.Serializable;
@@ -15,8 +16,8 @@ import java.io.Serializable;
  */
 public class Jogo implements Serializable {
 
-    private Estrategia estrategia1;
-    private Estrategia estrategia2;
+    private final Estrategia estrategia1;
+    private final Estrategia estrategia2;
     private int dimensao;
     private Jogador jogadorRodada;
     private Jogador vencedor;
@@ -39,7 +40,8 @@ public class Jogo implements Serializable {
     }
 
     public Jogador getVencedor() {
-        return estrategia1.getArmas().isEmpty() ? estrategia1.getJogador() : estrategia2.getJogador();
+        vencedor = estrategia1.isAllArmasInativas() ? estrategia1.getJogador() : estrategia2.isAllArmasInativas() ? estrategia2.getJogador() : null;
+        return vencedor;
     }
 
     public Estrategia getEstrategia1() {

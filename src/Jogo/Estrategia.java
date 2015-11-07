@@ -60,6 +60,15 @@ public class Estrategia {
         return explosivos;
     }
 
+    public boolean isAllArmasInativas() {
+        for (Arma arma : armas) {
+            if (arma instanceof CarroCombate && arma.isAtiva()) {
+                return false;
+            }
+        }
+        return true;
+    }
+
     public void addArma(Arma arma) {
         this.armas.add(arma);
     }

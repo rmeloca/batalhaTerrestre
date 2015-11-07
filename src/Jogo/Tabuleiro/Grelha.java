@@ -125,6 +125,8 @@ public class Grelha {
             addBorda(getCampo(coordenada));
         }
 
+        arma.setAtiva(true);
+
         //coleta lixo de todas as terras removidas
         System.gc();
         return true;
