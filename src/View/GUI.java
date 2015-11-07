@@ -37,7 +37,6 @@ public class GUI extends JFrame {
     private JogoController jogoController;
     ActionListener addArma1;
     ActionListener addArma2;
-    ActionListener addJogar;
 
     JButton btnM1;
     JButton btnM2;
@@ -86,15 +85,7 @@ public class GUI extends JFrame {
         lblQtdArmas2.setBackground(Color.white);
         lblQtdArmas2.setBounds(955, 200, 50, 50);
         add(lblQtdArmas2);
-        
-        addJogar = new ActionListener() {
 
-            @Override
-            public void actionPerformed(ActionEvent ae) {
-                
-            }
-        };
-        
         addArma1 = new ActionListener() {
 
             @Override
@@ -126,7 +117,7 @@ public class GUI extends JFrame {
                     l.setAtiva(true);
                     est.addArma(l);
                     lblQtdArmas1.setText(tamanho + "");
-                } else if(arg.equals("N")) {
+                } else if (arg.equals("N")) {
                     tamanho += 1;
                     M15 n = new M15();
                     n.setAtiva(true);
@@ -135,11 +126,14 @@ public class GUI extends JFrame {
                 }
                 if (tamanho > 6) {
                     btnA1.setEnabled(false);
-                } if (tamanho > 7) {
+                }
+                if (tamanho > 7) {
                     btnM1.setEnabled(false);
-                } if (tamanho > 8) {
+                }
+                if (tamanho > 8) {
                     btnG1.setEnabled(false);
-                } if (tamanho > 9) {
+                }
+                if (tamanho > 9) {
                     btnL1.setEnabled(false);
                     btnN1.setEnabled(false);
 
@@ -177,7 +171,7 @@ public class GUI extends JFrame {
                     l.setAtiva(true);
                     est.addArma(l);
                     lblQtdArmas2.setText(tamanho + "");
-                } else if(arg.equals("N")) {
+                } else if (arg.equals("N")) {
                     tamanho += 1;
                     M15 n = new M15();
                     n.setAtiva(true);
@@ -186,60 +180,61 @@ public class GUI extends JFrame {
                 }
                 if (tamanho > 6) {
                     btnA2.setEnabled(false);
-                } if (tamanho > 7) {
+                }
+                if (tamanho > 7) {
                     btnM2.setEnabled(false);
-                } if (tamanho > 8) {
+                }
+                if (tamanho > 8) {
                     btnG2.setEnabled(false);
-                } if (tamanho > 9) {
+                }
+                if (tamanho > 9) {
                     btnL2.setEnabled(false);
                     btnN2.setEnabled(false);
 
                 }
             }
         };
-        
-        
+
         btnM1 = new JButton("M60Patton (3)");
         btnM1.addActionListener(addArma1);
         btnM1.setActionCommand("M");
-     
+
         btnM2 = new JButton("M60Patton (3)");
         btnM2.addActionListener(addArma2);
         btnM2.setActionCommand("M");
-        
+
         btnA1 = new JButton("Astros2020 (4)");
         btnA1.addActionListener(addArma1);
         btnA1.setActionCommand("A");
-        
+
         btnA2 = new JButton("Astros2020 (4)");
         btnA2.addActionListener(addArma2);
         btnA2.setActionCommand("A");
-        
+
         btnL1 = new JButton("L118 (1)");
         btnL1.addActionListener(addArma1);
         btnL1.setActionCommand("L");
-        
+
         btnL2 = new JButton("L118 (1)");
         btnL2.addActionListener(addArma2);
         btnL2.setActionCommand("L");
-        
+
         btnG1 = new JButton("Guarani (2)");
         btnG1.addActionListener(addArma1);
         btnG1.setActionCommand("G");
-        
+
         btnG2 = new JButton("Guarani (2)");
         btnG2.addActionListener(addArma2);
         btnG2.setActionCommand("G");
-        
+
         btnN1 = new JButton("Mina M15 (1)");
         btnN1.addActionListener(addArma1);
         btnN1.setActionCommand("N");
-        
+
         btnN2 = new JButton("Mina M15 (1)");
         btnN2.addActionListener(addArma2);
         btnN2.setActionCommand("N");
 
-        
         btnM1.setBounds(200, 300, 100, 50);
         btnA1.setBounds(330, 300, 100, 50);
         btnL1.setBounds(150, 400, 100, 50);
@@ -277,23 +272,33 @@ public class GUI extends JFrame {
 
         executarMusica("01 - Main Theme.wav");
 
-
         btnPvp.addActionListener(new ActionListener() {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                dispose();
-                jogo.getEstrategia1().dispoeArmas();
-                jogo.getEstrategia2().dispoeArmas();
-                jogo.inicializar();
-                JPanel painelConfronto = new PainelConfronto(jogoController.getJogos().get(0));
-                JFrame jFrame = new JFrame();
-                jFrame.setContentPane(painelConfronto);
-                jFrame.setSize(1280, 720);
-                jFrame.setTitle("Confronto");
-                jFrame.setDefaultCloseOperation(EXIT_ON_CLOSE);
-                jFrame.setResizable(false);
-                jFrame.setVisible(true);
+                String qtd1 = lblQtdArmas1.getText();
+                String qtd2 = lblQtdArmas2.getText();
+
+                if (qtd1.equals("10") && qtd2.equals("10")) {
+
+                    String nome1 = jtfJogador1.getText();
+                    String nome2 = jtfJogador2.getText();
+                    jogador1.setNome(nome1);
+                    jogador2.setNome(nome2);
+                    
+                    dispose();
+                    jogo.getEstrategia1().dispoeArmas();
+                    jogo.getEstrategia2().dispoeArmas();
+                    jogo.inicializar();
+                    JPanel painelConfronto = new PainelConfronto(jogoController.getJogos().get(0));
+                    JFrame jFrame = new JFrame();
+                    jFrame.setContentPane(painelConfronto);
+                    jFrame.setSize(1280, 720);
+                    jFrame.setTitle("Confronto");
+                    jFrame.setDefaultCloseOperation(EXIT_ON_CLOSE);
+                    jFrame.setResizable(false);
+                    jFrame.setVisible(true);
+                }
             }
         });
 
