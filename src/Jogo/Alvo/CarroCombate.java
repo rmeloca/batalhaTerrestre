@@ -6,7 +6,7 @@
 package Jogo.Alvo;
 
 import Jogo.Tabuleiro.Campo;
-import java.util.ArrayList;
+import Jogo.Tabuleiro.Grelha;
 import java.util.List;
 
 /**
@@ -20,9 +20,10 @@ public abstract class CarroCombate extends Arma {
         Objeto objeto;
         Arma arma;
         List<Campo> camposArma;
-        List<Campo> novoCampos;
         int qtdInv = 0, qtdAcer = 0, i;
         int tamanho = campos.size();
+        int camposAcertados = 0;
+        Grelha grelha;
         for (i = 0; i < tamanho; i++) {
             campo = campos.get(i);
             if (campo.foiAtirado() || (!(campo.isAtiravel()))) {
@@ -32,29 +33,39 @@ public abstract class CarroCombate extends Arma {
                 campo.setAtiravel(false);
                 objeto = campo.getObjeto();
                 arma = (Arma) objeto;
+                grelha = campo.getGrelha();
                 if (arma instanceof CarroCombate) {
                     camposArma = arma.getCampos();
-                    novoCampos = new ArrayList<>();
                     for (Campo c : camposArma) {
                         if ((c.getCoordenada().getX() == campo.getCoordenada().getX()) && (c.getCoordenada().getY() == campo.getCoordenada().getY())) {
                             qtdAcer++;
-                        } else {
-                            novoCampos.add(c);
+                            c.setAtirado(true);
                         }
-                    }
-                    arma.setCampos(novoCampos);
-                    // CONTINUA A VEZ
-                    if (novoCampos.isEmpty()) {
-                        arma.setAtiva(false);
+                        if (c.foiAtirado()) {
+                            camposAcertados++;
+                            if ((arma instanceof Astros2020) && (camposAcertados == 4)) {
+                                arma.setAtiva(false);
+                                grelha.setBordasInativas(camposArma);
+                                return -1;
+                            } else if ((arma instanceof M60Patton) && (camposAcertados == 3)) {
+                                arma.setAtiva(false);
+                                grelha.setBordasInativas(camposArma);
+
+                                return -1;
+                            } else if ((arma instanceof Guarani) && (camposAcertados == 2)) {
+                                arma.setAtiva(false);
+                                grelha.setBordasInativas(camposArma);
+                                return -1;
+                            } else if ((arma instanceof L118) && (camposAcertados == 1)) {
+                                arma.setAtiva(false);
+                                grelha.setBordasInativas(camposArma);
+                                return -1;
+                            }
+                        }
                     }
                 }
             }
         }
-        //Atira de novo
-        if (qtdInv == (i - 1)) {
-            return -1;
-        } else {
-            return qtdAcer;
-        }
+        return qtdAcer;
     }
 }
