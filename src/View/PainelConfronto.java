@@ -6,6 +6,7 @@
 package View;
 
 import Jogo.Alvo.CarroCombate;
+import Jogo.Jogador;
 import Jogo.Jogo;
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
@@ -36,25 +37,25 @@ public class PainelConfronto extends JPanel {
         painelGrelha1 = new PainelGrelha(jogo.getEstrategia1().getGrelha());
         painelGrelha2 = new PainelGrelha(jogo.getEstrategia2().getGrelha());
 
-        painelGrelha1.setGrelhaInimiga(painelGrelha2);
-        painelGrelha2.setGrelhaInimiga(painelGrelha1);
+        painelGrelha1.setPainelConfronto(this);
+        painelGrelha2.setPainelConfronto(this);
 
         painelPrincipal.add(painelGrelha1);
         painelPrincipal.add(painelGrelha2);
 
         painelGrelha1.atualizarGrelha();
         painelGrelha2.desabilitarGrelha();
-        atualizarToolBar();
+        atualizarToolBar(jogo.getEstrategia1().getJogador());
 
         add(painelPrincipal, BorderLayout.CENTER);
         add(toolBar, BorderLayout.NORTH);
 
     }
 
-    private void atualizarToolBar() {
+    protected void atualizarToolBar(Jogador jogador) {
         toolBar.removeAll();
         JButton jButton;
-        for (CarroCombate carroCombate : jogo.getEstrategia(jogo.getJogadorProximaRodada()).getCarrosCombate()) {
+        for (CarroCombate carroCombate : jogo.getEstrategia(jogador).getCarrosCombate()) {
             jButton = new JButton(carroCombate.toString());
             toolBar.add(jButton);
             if (!carroCombate.isAtiva()) {

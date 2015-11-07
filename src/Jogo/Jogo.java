@@ -39,8 +39,19 @@ public class Jogo implements Serializable {
         }
     }
 
+    public boolean haVencedor() {
+        if (estrategia1.isAllArmasInativas()) {
+            vencedor = estrategia1.getJogador();
+        } else if (estrategia2.isAllArmasInativas()) {
+            vencedor = estrategia2.getJogador();
+        } else {
+            vencedor = null;
+            return false;
+        }
+        return true;
+    }
+
     public Jogador getVencedor() {
-        vencedor = estrategia1.isAllArmasInativas() ? estrategia1.getJogador() : estrategia2.isAllArmasInativas() ? estrategia2.getJogador() : null;
         return vencedor;
     }
 
@@ -52,7 +63,10 @@ public class Jogo implements Serializable {
         return estrategia2;
     }
 
-    public Jogador getJogadorProximaRodada() {
+    public Jogador getJogadorProximaRodada(boolean acertou) {
+        if (acertou) {
+            return jogadorRodada;
+        }
         if (this.jogadorRodada.equals(estrategia1.getJogador())) {
             jogadorRodada = estrategia2.getJogador();
         } else {

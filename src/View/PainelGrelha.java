@@ -7,6 +7,7 @@ package View;
 
 import Jogo.Alvo.Guarani;
 import Jogo.Alvo.Terra;
+import Jogo.Jogador;
 import Jogo.Tabuleiro.Campo;
 import Jogo.Tabuleiro.Coordenada;
 import Jogo.Tabuleiro.Grelha;
@@ -29,7 +30,7 @@ public class PainelGrelha extends JPanel {
     JButton[][] campos;
     ActionListener campoActionListener;
     Grelha grelha;
-    PainelGrelha grelhaInimiga;
+    PainelConfronto painelConfronto;
 
     public PainelGrelha(Grelha grelha) {
         this.grelha = grelha;
@@ -55,15 +56,26 @@ public class PainelGrelha extends JPanel {
                 campo = grelha.getCampo(coordenada);
                 camposSelecionados.add(campo);
 
-                guarani.atirar(camposSelecionados);
+                boolean acertou = guarani.atirar(camposSelecionados) > 0;
+
+                Jogador jogador = painelConfronto.jogo.getJogadorProximaRodada(acertou);
                 btnCampo = campos[coordenada.getX()][coordenada.getY()];
                 btnCampo.setEnabled(false);
                 btnCampo.setBackground(Color.red);
                 btnCampo.setText(campo.getObjeto().toString());
                 btnCampo.setIcon(new ImageIcon(campo.getObjeto().getImagem()));
 
-                desabilitarGrelha();
-                grelhaInimiga.atualizarGrelha();
+                if (painelConfronto.jogo.haVencedor()) {
+                    painelConfronto.painelGrelha1.desabilitarGrelha();
+                    painelConfronto.painelGrelha2.desabilitarGrelha();
+                } else if (jogador.equals(painelConfronto.jogo.getEstrategia1().getJogador())) {
+                    painelConfronto.painelGrelha1.atualizarGrelha();
+                    painelConfronto.painelGrelha2.desabilitarGrelha();
+                } else {
+                    painelConfronto.painelGrelha2.atualizarGrelha();
+                    painelConfronto.painelGrelha1.desabilitarGrelha();
+                }
+                painelConfronto.atualizarToolBar(jogador);
             }
         };
 
@@ -93,11 +105,11 @@ public class PainelGrelha extends JPanel {
         }
     }
 
-    public void setGrelhaInimiga(PainelGrelha grelhaInimiga) {
-        this.grelhaInimiga = grelhaInimiga;
+    public void setPainelConfronto(PainelConfronto painelConfronto) {
+        this.painelConfronto = painelConfronto;
     }
 
-    public void atualizarGrelha() {
+    protected void atualizarGrelha() {
         Terra terra = new Terra();
         JButton btnCampo;
         Campo campo;
@@ -116,7 +128,7 @@ public class PainelGrelha extends JPanel {
         }
     }
 
-    public void desabilitarGrelha() {
+    protected void desabilitarGrelha() {
         JButton btnCampo;
         for (int i = 0; i < grelha.getDimensao(); i++) {
             for (int j = 0; j < grelha.getDimensao(); j++) {
