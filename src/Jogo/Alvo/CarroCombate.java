@@ -40,14 +40,11 @@ public abstract class CarroCombate extends Arma {
                         if ((c.getCoordenada().getX() == campo.getCoordenada().getX()) && (c.getCoordenada().getY() == campo.getCoordenada().getY())) {
                             qtdAcer++;
                         }
-                        System.out.println("Entrou1");
                         if (c.foiAtirado()) {
                             camposAcertados++;
-                            System.out.println("Entrou2");
                             if ((arma instanceof Astros2020) && (camposAcertados == 4)) {
                                 arma.setAtiva(false);
                                 grelha.setBordasInativas(camposArma);
-                                System.out.println("Entrou3");
                                 return -1;
                             } else if ((arma instanceof M60Patton) && (camposAcertados == 3)) {
                                 arma.setAtiva(false);

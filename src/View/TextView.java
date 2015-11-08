@@ -6,7 +6,12 @@
 package View;
 
 import Controller.JogoController;
-import Jogo.Alvo.*;
+import Jogo.Alvo.Astros2020;
+import Jogo.Alvo.Guarani;
+import Jogo.Alvo.L118;
+import Jogo.Alvo.M15;
+import Jogo.Alvo.M60Patton;
+import Jogo.Alvo.Terra;
 import Jogo.Jogador;
 import Jogo.Jogo;
 import Jogo.Tabuleiro.Campo;

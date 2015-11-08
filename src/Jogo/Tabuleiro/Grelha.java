@@ -136,7 +136,7 @@ public class Grelha {
         if (campo != null) {
             campo.setAtiravel(false);
             if (campo.getObjeto() instanceof Borda) {
-                campo.getObjeto().setImagem("borda.png");
+                campo.getObjeto().setImagem("80_borda.png");
             }
         }
     }

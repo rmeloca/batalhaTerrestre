@@ -34,25 +34,25 @@ import sun.audio.AudioStream;
  */
 public class GUI extends JFrame {
 
-    JButton btnPvp;
-    JLabel lblImagem;
     private JogoController jogoController;
-    ActionListener addArma1;
-    ActionListener addArma2;
+    private JButton btnJogar;
+    private JLabel lblImagem;
+    private ActionListener addArma1;
+    private ActionListener addArma2;
 
-    int qtdN1 = 0;
-    int qtdN2 = 0;
+    private int qtdN1 = 0;
+    private int qtdN2 = 0;
 
-    JButton btnM1;
-    JButton btnM2;
-    JButton btnA1;
-    JButton btnA2;
-    JButton btnL1;
-    JButton btnL2;
-    JButton btnG1;
-    JButton btnG2;
-    JButton btnN1;
-    JButton btnN2;
+    private JButton btnM1;
+    private JButton btnM2;
+    private JButton btnA1;
+    private JButton btnA2;
+    private JButton btnL1;
+    private JButton btnL2;
+    private JButton btnG1;
+    private JButton btnG2;
+    private JButton btnN1;
+    private JButton btnN2;
 
     public GUI() {
         jogoController = new JogoController();
@@ -65,9 +65,9 @@ public class GUI extends JFrame {
         setTitle("Batalha Terrestre");
 
         setLayout(null);
-        btnPvp = new JButton("Jogar");
-        btnPvp.setBounds(590, 580, 100, 30);
-        add(btnPvp);
+        btnJogar = new JButton("Jogar");
+        btnJogar.setBounds(590, 580, 100, 30);
+        add(btnJogar);
 
         JTextField jtfJogador1;
         jtfJogador1 = new JTextField("Jogador 1");
@@ -298,12 +298,6 @@ public class GUI extends JFrame {
         add(btnG2);
         add(btnN2);
 
-//        
-//        int vida1 = 10, vida2 = 10;
-//        
-//        while(vida1 > 0){
-//           
-//        }
         ImageIcon imagem = new ImageIcon("src/Icon/entrada.png");
         lblImagem = new JLabel(imagem);
         lblImagem.setBounds(0, 0, imagem.getIconWidth(), imagem.getIconHeight());
@@ -311,7 +305,7 @@ public class GUI extends JFrame {
 
         executarMusica("01 - Main Theme.wav");
 
-        btnPvp.addActionListener(new ActionListener() {
+        btnJogar.addActionListener(new ActionListener() {
 
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -329,14 +323,7 @@ public class GUI extends JFrame {
                     jogo.getEstrategia1().dispoeArmas();
                     jogo.getEstrategia2().dispoeArmas();
                     jogo.inicializar();
-                    JPanel painelConfronto = new PainelConfronto(jogoController.getJogos().get(0));
-                    JFrame jFrame = new JFrame();
-                    jFrame.setContentPane(painelConfronto);
-                    jFrame.setSize(1280, 720);
-                    jFrame.setTitle("Confronto");
-                    jFrame.setDefaultCloseOperation(EXIT_ON_CLOSE);
-                    jFrame.setResizable(false);
-                    jFrame.setVisible(true);
+                    JFrame painelConfronto = new FrameConfronto(jogoController.getJogos().get(0));
                 } else {
                     JOptionPane.showMessageDialog(null, "É necessário utilizar os 10 espaços disponíveis");
                 }

@@ -19,6 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
@@ -30,7 +31,7 @@ public class PainelGrelha extends JPanel {
     JButton[][] campos;
     ActionListener campoActionListener;
     Grelha grelha;
-    PainelConfronto painelConfronto;
+    FrameConfronto frameConfronto;
 
     public PainelGrelha(Grelha grelha) {
         this.grelha = grelha;
@@ -56,26 +57,31 @@ public class PainelGrelha extends JPanel {
                 campo = grelha.getCampo(coordenada);
                 camposSelecionados.add(campo);
 
-                boolean acertou = guarani.atirar(camposSelecionados) > 0;
+                int retorno = guarani.atirar(camposSelecionados);
+                boolean acertou = retorno > 0 || retorno == -1;
 
-                Jogador jogador = painelConfronto.jogo.getJogadorProximaRodada(acertou);
+                Jogador jogador = frameConfronto.jogo.getJogadorProximaRodada(acertou);
                 btnCampo = campos[coordenada.getX()][coordenada.getY()];
                 btnCampo.setEnabled(false);
                 btnCampo.setBackground(Color.red);
                 btnCampo.setText(campo.getObjeto().toString());
                 btnCampo.setIcon(new ImageIcon(campo.getObjeto().getImagem()));
 
-                if (painelConfronto.jogo.haVencedor()) {
-                    painelConfronto.painelGrelha1.desabilitarGrelha();
-                    painelConfronto.painelGrelha2.desabilitarGrelha();
-                } else if (jogador.equals(painelConfronto.jogo.getEstrategia1().getJogador())) {
-                    painelConfronto.painelGrelha1.atualizarGrelha();
-                    painelConfronto.painelGrelha2.desabilitarGrelha();
+                if (frameConfronto.jogo.haVencedor()) {
+                    frameConfronto.painelGrelha1.desabilitarGrelha();
+                    frameConfronto.painelGrelha2.desabilitarGrelha();
+                    if (JOptionPane.showConfirmDialog(null, jogador.getNome() + " Venceu!") == JOptionPane.OK_OPTION) {
+                        frameConfronto.dispose();
+                        new GUI();
+                    }
+                } else if (jogador.equals(frameConfronto.jogo.getEstrategia1().getJogador())) {
+                    frameConfronto.painelGrelha1.atualizarGrelha();
+                    frameConfronto.painelGrelha2.desabilitarGrelha();
                 } else {
-                    painelConfronto.painelGrelha2.atualizarGrelha();
-                    painelConfronto.painelGrelha1.desabilitarGrelha();
+                    frameConfronto.painelGrelha2.atualizarGrelha();
+                    frameConfronto.painelGrelha1.desabilitarGrelha();
                 }
-                painelConfronto.atualizarToolBar(jogador);
+                frameConfronto.atualizarToolBar(jogador);
             }
         };
 
@@ -105,8 +111,8 @@ public class PainelGrelha extends JPanel {
         }
     }
 
-    public void setPainelConfronto(PainelConfronto painelConfronto) {
-        this.painelConfronto = painelConfronto;
+    public void setFrameConfronto(FrameConfronto painelConfronto) {
+        this.frameConfronto = painelConfronto;
     }
 
     protected void atualizarGrelha() {
