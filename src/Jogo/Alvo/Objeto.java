@@ -18,7 +18,7 @@ public abstract class Objeto {
     List<Campo> campos;
 
     public String getImagem() {
-        return "src/Icon/" + imagem;
+        return "/Icon/" + imagem;
     }
 
     public void setImagem(String imagem) {

@@ -69,7 +69,7 @@ public class FrameConfronto extends JFrame {
         toolBar.add(new JLabel(jogador.getNome()));
         for (CarroCombate carroCombate : jogo.getEstrategia(jogador).getCarrosCombate()) {
             jButton = new JButton();
-            jButton.setIcon(new ImageIcon(carroCombate.getImagem()));
+            jButton.setIcon(new ImageIcon(getClass().getResource(carroCombate.getImagem())));
             toolBar.add(jButton);
             if (!carroCombate.isAtiva()) {
                 jButton.setEnabled(false);

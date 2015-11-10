@@ -227,52 +227,52 @@ public class GUI extends JFrame {
         btnM1 = new JButton();
         btnM1.addActionListener(addArma1);
         btnM1.setActionCommand("M");
-        btnM1.setIcon(new ImageIcon(new M60Patton().getImagem()));
+        btnM1.setIcon(new ImageIcon(getClass().getResource(new M60Patton().getImagem())));
 
         btnM2 = new JButton();
         btnM2.addActionListener(addArma2);
         btnM2.setActionCommand("M");
-        btnM2.setIcon(new ImageIcon(new M60Patton().getImagem()));
+        btnM2.setIcon(new ImageIcon(getClass().getResource(new M60Patton().getImagem())));
 
         btnA1 = new JButton();
         btnA1.addActionListener(addArma1);
         btnA1.setActionCommand("A");
-        btnA1.setIcon(new ImageIcon(new Astros2020().getImagem()));
+        btnA1.setIcon(new ImageIcon(getClass().getResource(new Astros2020().getImagem())));
 
         btnA2 = new JButton();
         btnA2.addActionListener(addArma2);
         btnA2.setActionCommand("A");
-        btnA2.setIcon(new ImageIcon(new Astros2020().getImagem()));
+        btnA2.setIcon(new ImageIcon(getClass().getResource(new Astros2020().getImagem())));
 
         btnL1 = new JButton();
         btnL1.addActionListener(addArma1);
         btnL1.setActionCommand("L");
-        btnL1.setIcon(new ImageIcon(new L118().getImagem()));
+        btnL1.setIcon(new ImageIcon(getClass().getResource(new L118().getImagem())));
 
         btnL2 = new JButton();
         btnL2.addActionListener(addArma2);
         btnL2.setActionCommand("L");
-        btnL2.setIcon(new ImageIcon(new L118().getImagem()));
+        btnL2.setIcon(new ImageIcon(getClass().getResource(new L118().getImagem())));
 
         btnG1 = new JButton();
         btnG1.addActionListener(addArma1);
         btnG1.setActionCommand("G");
-        btnG1.setIcon(new ImageIcon(new Guarani().getImagem()));
+        btnG1.setIcon(new ImageIcon(getClass().getResource(new Guarani().getImagem())));
 
         btnG2 = new JButton();
         btnG2.addActionListener(addArma2);
         btnG2.setActionCommand("G");
-        btnG2.setIcon(new ImageIcon(new Guarani().getImagem()));
+        btnG2.setIcon(new ImageIcon(getClass().getResource(new Guarani().getImagem())));
 
         btnN1 = new JButton();
         btnN1.addActionListener(addArma1);
         btnN1.setActionCommand("N");
-        btnN1.setIcon(new ImageIcon(new M15().getImagem()));
+        btnN1.setIcon(new ImageIcon(getClass().getResource(new M15().getImagem())));
 
         btnN2 = new JButton();
         btnN2.addActionListener(addArma2);
         btnN2.setActionCommand("N");
-        btnN2.setIcon(new ImageIcon(new M15().getImagem()));
+        btnN2.setIcon(new ImageIcon(getClass().getResource(new M15().getImagem())));
 
         btnM1.setBounds(200, 300, 80, 80);
         btnA1.setBounds(330, 300, 80, 80);
@@ -298,7 +298,7 @@ public class GUI extends JFrame {
         add(btnG2);
         add(btnN2);
 
-        ImageIcon imagem = new ImageIcon("src/Icon/entrada.png");
+        ImageIcon imagem = new ImageIcon(getClass().getResource("/Icon/entrada.png"));
         lblImagem = new JLabel(imagem);
         lblImagem.setBounds(0, 0, imagem.getIconWidth(), imagem.getIconHeight());
         add(lblImagem);

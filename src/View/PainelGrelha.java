@@ -65,7 +65,7 @@ public class PainelGrelha extends JPanel {
                 btnCampo.setEnabled(false);
                 btnCampo.setBackground(Color.red);
                 btnCampo.setText(campo.getObjeto().toString());
-                btnCampo.setIcon(new ImageIcon(campo.getObjeto().getImagem()));
+                btnCampo.setIcon(new ImageIcon(getClass().getResource(campo.getObjeto().getImagem())));
 
                 if (frameConfronto.jogo.haVencedor()) {
                     frameConfronto.painelGrelha1.desabilitarGrelha();
@@ -100,11 +100,11 @@ public class PainelGrelha extends JPanel {
                     btnCampo.setText(campo.getObjeto().toString());
                     btnCampo.setEnabled(false);
                     btnCampo.setBackground(Color.BLUE);
-                    btnCampo.setIcon(new ImageIcon(campo.getObjeto().getImagem()));
+                    btnCampo.setIcon(new ImageIcon(getClass().getResource(campo.getObjeto().getImagem())));
                 } else {
                     btnCampo.setText(terra.toString());
                     btnCampo.setBackground(Color.GRAY);
-                    btnCampo.setIcon(new ImageIcon(terra.getImagem()));
+                    btnCampo.setIcon(new ImageIcon(getClass().getResource(terra.getImagem())));
                 }
                 add(btnCampo);
             }
@@ -125,10 +125,10 @@ public class PainelGrelha extends JPanel {
                 campo = grelha.getCampos()[i][j];
                 if (campo.isAtiravel()) {
                     btnCampo.setEnabled(true);
-                    btnCampo.setIcon(new ImageIcon(terra.getImagem()));
+                    btnCampo.setIcon(new ImageIcon(getClass().getResource(terra.getImagem())));
                 } else {
                     btnCampo.setEnabled(false);
-                    btnCampo.setIcon(new ImageIcon(campo.getObjeto().getImagem()));
+                    btnCampo.setIcon(new ImageIcon(getClass().getResource(campo.getObjeto().getImagem())));
                 }
             }
         }
