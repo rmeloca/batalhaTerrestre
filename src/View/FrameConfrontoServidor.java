@@ -25,7 +25,7 @@ import javax.swing.JToolBar;
 public class FrameConfrontoServidor extends JFrame {
 
     protected PainelGrelhaServidor painelGrelhaInimiga;
-    protected PainelGrelha painelMinhaGrelha;
+    protected PainelGrelhaServidor painelMinhaGrelha;
     protected JToolBar toolBar;
     protected Jogo jogo;
     protected static Socket cliente;
@@ -39,17 +39,14 @@ public class FrameConfrontoServidor extends JFrame {
         painelPrincipal = new JPanel();
         toolBar = new JToolBar();
 
-        this.cliente = cliente;
+        FrameConfrontoServidor.cliente = cliente;
         this.jogo = jogo;
 
         painelPrincipal.setLayout(new GridLayout(1, 2));
-        painelMinhaGrelha = new PainelGrelha(jogo.getEstrategia1().getGrelha());
-        
-        
-        
+        painelMinhaGrelha = new PainelGrelhaServidor(jogo.getEstrategia1().getGrelha());
         painelGrelhaInimiga = new PainelGrelhaServidor(jogo.getEstrategia2().getGrelha());
 
-        painelMinhaGrelha.setFrameConfronto(null);
+        painelMinhaGrelha.setFrameConfronto(this);
         painelGrelhaInimiga.setFrameConfronto(this);
         painelPrincipal.add(painelMinhaGrelha);
         painelPrincipal.add(painelGrelhaInimiga);

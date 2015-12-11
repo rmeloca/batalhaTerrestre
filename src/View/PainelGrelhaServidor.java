@@ -53,8 +53,7 @@ public class PainelGrelhaServidor extends JPanel {
                 ObjectOutputStream saida;
                 ObjectInputStream entrada;
                 try {
-                    saida = new ObjectOutputStream(frameConfronto.cliente.getOutputStream());
-                    entrada = new ObjectInputStream(frameConfronto.cliente.getInputStream());
+                    saida = new ObjectOutputStream(FrameConfrontoServidor.cliente.getOutputStream());
 
                     String[] action;
                     List<Campo> camposSelecionados;
@@ -95,10 +94,12 @@ public class PainelGrelhaServidor extends JPanel {
                         }
                     }
                     if (jogador.equals(frameConfronto.jogo.getEstrategia2().getJogador())) {
-                        camposSelecionados = (List<Campo>) entrada.readObject();
+//                        camposSelecionados = (List<Campo>) entrada.readObject();
                         frameConfronto.atualizarToolBar(frameConfronto.jogo.getEstrategia1());
+                    } else {
+                        desabilitarGrelha();
                     }
-                } catch (IOException | ClassNotFoundException ex) {
+                } catch (IOException ex) {
                     Logger.getLogger(PainelGrelhaServidor.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }

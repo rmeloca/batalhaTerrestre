@@ -13,11 +13,15 @@ import Jogo.Alvo.M60Patton;
 import Jogo.Estrategia;
 import Jogo.Jogador;
 import Jogo.Jogo;
+import Jogo.Tabuleiro.Campo;
+import Jogo.Tabuleiro.Coordenada;
 import static View.TextView.imprimirGrelha;
 import static View.TextView.imprimirJogo;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JOptionPane;
 
 /**
@@ -67,7 +71,20 @@ public class Cliente {
             System.out.println("Você sofreu baixas");
             imprimirJogo(jogo);
 
-            JOptionPane.showInputDialog("Qual coordenada, comandante " + jogador2.getNome() + "?");
+            Guarani guarani = new Guarani();
+            List<Campo> campos = new ArrayList<>();
+            while (!jogo.haVencedor()) {
+                String coordenadaStr[] = JOptionPane.showInputDialog("Qual coordenada, comandante " + jogador2.getNome() + "?").split(" ");
+                Coordenada coordenada = new Coordenada(Integer.parseInt(coordenadaStr[0]), Integer.parseInt(coordenadaStr[1]));
+                saida.flush();
+                saida.writeObject(coordenada);
+                campos.clear();
+                campos.add(jogo.getEstrategia1().getGrelha().getCampo(coordenada));
+                boolean acertou = guarani.atirar(campos) > 0;
+                while (jogo.getJogadorProximaRodada(acertou).equals(jogador2)) {
+
+                }
+            }
 
             saida.close();
             entrada.close();
