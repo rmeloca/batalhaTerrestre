@@ -213,7 +213,7 @@ public class GUIServidor extends JFrame {
                     try {
 
                         servidor = new ServerSocket(12345);
-                        JOptionPane.showMessageDialog(rootPane, "Aguardando inimigo");
+                        JOptionPane.showMessageDialog(rootPane, "Última cartada enviada.\nAguardando resposta inimiga");
                         cliente = servidor.accept();
 
                         entrada = new ObjectInputStream(cliente.getInputStream());
@@ -227,6 +227,7 @@ public class GUIServidor extends JFrame {
 
                         Estrategia estrategia2 = (Estrategia) entrada.readObject();
                         jogo.setEstrategia2(estrategia2);
+                        JOptionPane.showMessageDialog(rootPane, "Guerra declarada!\nAo combate");
 
                         jogo.inicializar();
 
@@ -238,7 +239,7 @@ public class GUIServidor extends JFrame {
                         Logger.getLogger(GUIServidor.class.getName()).log(Level.SEVERE, null, ex);
                     }
                 } else {
-                    JOptionPane.showMessageDialog(null, "É necessário utilizar os 10 espaços disponíveis");
+                    JOptionPane.showMessageDialog(null, "Utilize toda a sua força, comandante, o inimigo possui muitas tropas");
                 }
             }
         });

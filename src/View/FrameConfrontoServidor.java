@@ -10,11 +10,7 @@ import Jogo.Estrategia;
 import Jogo.Jogo;
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
-import java.io.IOException;
-import java.io.ObjectOutputStream;
 import java.net.Socket;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -29,13 +25,13 @@ import javax.swing.JToolBar;
 public class FrameConfrontoServidor extends JFrame {
 
     protected PainelGrelhaServidor painelGrelhaInimiga;
-    protected PainelGrelhaServidor painelMinhaGrelha;
+    protected PainelGrelha painelMinhaGrelha;
     protected JToolBar toolBar;
     protected Jogo jogo;
-    protected Socket cliente;
+    protected static Socket cliente;
 
     public FrameConfrontoServidor(Socket cliente, Jogo jogo) {
-        setTitle("Confronto");
+        setTitle("Confronto Servidor");
 
         JPanel painelPrincipal;
 
@@ -47,10 +43,13 @@ public class FrameConfrontoServidor extends JFrame {
         this.jogo = jogo;
 
         painelPrincipal.setLayout(new GridLayout(1, 2));
-        painelMinhaGrelha = new PainelGrelhaServidor(jogo.getEstrategia1().getGrelha());
+        painelMinhaGrelha = new PainelGrelha(jogo.getEstrategia1().getGrelha());
+        
+        
+        
         painelGrelhaInimiga = new PainelGrelhaServidor(jogo.getEstrategia2().getGrelha());
 
-        painelMinhaGrelha.setFrameConfronto(this);
+        painelMinhaGrelha.setFrameConfronto(null);
         painelGrelhaInimiga.setFrameConfronto(this);
         painelPrincipal.add(painelMinhaGrelha);
         painelPrincipal.add(painelGrelhaInimiga);

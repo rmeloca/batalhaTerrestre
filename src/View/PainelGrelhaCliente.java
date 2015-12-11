@@ -53,8 +53,8 @@ public class PainelGrelhaCliente extends JPanel {
                 ObjectOutputStream saida;
                 ObjectInputStream entrada;
                 try {
-                    saida = new ObjectOutputStream(frameConfronto.cliente.getOutputStream());
-                    entrada = new ObjectInputStream(frameConfronto.cliente.getInputStream());
+                    saida = new ObjectOutputStream(FrameConfrontoCliente.cliente.getOutputStream());
+                    entrada = new ObjectInputStream(FrameConfrontoCliente.cliente.getInputStream());
 
                     String[] action;
                     List<Campo> camposSelecionados;
@@ -71,34 +71,33 @@ public class PainelGrelhaCliente extends JPanel {
                     boolean acertou;
                     int retorno;
                     Jogador jogador;
-                    do {
-                        retorno = guarani.atirar(camposSelecionados);
+                    retorno = guarani.atirar(camposSelecionados);
 
-                        acertou = retorno > 0 || retorno == -1;
+                    acertou = retorno > 0 || retorno == -1;
 
-                        btnCampo = campos[coordenada.getX()][coordenada.getY()];
-                        btnCampo.setEnabled(false);
-                        btnCampo.setBackground(Color.red);
-                        btnCampo.setText(campo.getObjeto().toString());
-                        btnCampo.setIcon(new ImageIcon(getClass().getResource(campo.getObjeto().getImagem())));
+                    btnCampo = campos[coordenada.getX()][coordenada.getY()];
+                    btnCampo.setEnabled(false);
+                    btnCampo.setBackground(Color.red);
+                    btnCampo.setText(campo.getObjeto().toString());
+                    btnCampo.setIcon(new ImageIcon(getClass().getResource(campo.getObjeto().getImagem())));
 
-                        jogador = frameConfronto.jogo.getJogadorProximaRodada(acertou);
+                    saida.flush();
+                    saida.writeObject(camposSelecionados);
 
-                        if (frameConfronto.jogo.haVencedor()) {
-                            frameConfronto.painelMinhaGrelha.desabilitarGrelha();
-                            frameConfronto.painelGrelhaInimiga.desabilitarGrelha();
-                            if (JOptionPane.showConfirmDialog(null, jogador.getNome() + " Venceu!") == JOptionPane.OK_OPTION) {
-                                frameConfronto.dispose();
-                                new GUI();
-                            }
-                        } else if (jogador.equals(frameConfronto.jogo.getEstrategia1().getJogador())) {
-                            saida.flush();
-                            saida.writeObject(camposSelecionados);
-                        } else {
-                            camposSelecionados = (List<Campo>) entrada.readObject();
-                            frameConfronto.atualizarToolBar(frameConfronto.jogo.getEstrategia1());
+                    jogador = frameConfronto.jogo.getJogadorProximaRodada(acertou);
+
+                    if (frameConfronto.jogo.haVencedor()) {
+                        frameConfronto.painelMinhaGrelha.desabilitarGrelha();
+                        frameConfronto.painelGrelhaInimiga.desabilitarGrelha();
+                        if (JOptionPane.showConfirmDialog(null, jogador.getNome() + " Venceu!") == JOptionPane.OK_OPTION) {
+                            frameConfronto.dispose();
+                            new GUI();
                         }
-                    } while (!acertou);
+                    }
+                    if (jogador.equals(frameConfronto.jogo.getEstrategia1().getJogador())) {
+                        camposSelecionados = (List<Campo>) entrada.readObject();
+                        frameConfronto.atualizarToolBar(frameConfronto.jogo.getEstrategia1());
+                    }
                 } catch (IOException | ClassNotFoundException ex) {
                     Logger.getLogger(PainelGrelhaServidor.class.getName()).log(Level.SEVERE, null, ex);
                 }

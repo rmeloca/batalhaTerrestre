@@ -215,6 +215,8 @@ public class GUICliente extends JFrame {
                         saida.flush();
                         saida.writeObject(estrategia2);
 
+                        JOptionPane.showMessageDialog(rootPane, "Guerra declarada!\nAo combate");
+                        
                         Jogo jogo = (Jogo) entrada.readObject();
                         JFrame painelConfronto = new FrameConfrontoCliente(cliente, jogo);
 
@@ -231,6 +233,7 @@ public class GUICliente extends JFrame {
         setSize(700, 700);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setVisible(true);
+        JOptionPane.showMessageDialog(null, "Inimigo declarou Guerra!\nEscolha suas armas, Comandante");
     }
 
     public static void main(String[] args) {
@@ -238,7 +241,7 @@ public class GUICliente extends JFrame {
             cliente = new Socket("localhost", 12345);
             new GUICliente();
         } catch (IOException ex) {
-            JOptionPane.showMessageDialog(null, "Servidor indisponível");
+            JOptionPane.showMessageDialog(null, "Solução diplomática encontrada. Inimigo não declarou Guerra!");
         }
     }
 
