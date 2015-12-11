@@ -5,11 +5,13 @@
  */
 package Jogo.Tabuleiro;
 
+import java.io.Serializable;
+
 /**
  *
  * @author romulo
  */
-public class Coordenada {
+public final class Coordenada implements Serializable {
 
     private int x;
     private int y;

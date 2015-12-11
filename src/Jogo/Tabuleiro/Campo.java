@@ -6,12 +6,13 @@
 package Jogo.Tabuleiro;
 
 import Jogo.Alvo.Objeto;
+import java.io.Serializable;
 
 /**
  *
  * @author romulo
  */
-public final class Campo {
+public final class Campo implements Serializable {
 
     private Objeto objeto;
     private boolean atirado;

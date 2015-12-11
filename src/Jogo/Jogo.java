@@ -5,7 +5,6 @@
  */
 package Jogo;
 
-import Jogo.Alvo.Arma;
 import Jogo.Alvo.Explosivo;
 import Jogo.Tabuleiro.Grelha;
 import java.io.Serializable;
@@ -16,8 +15,8 @@ import java.io.Serializable;
  */
 public class Jogo implements Serializable {
 
-    private final Estrategia estrategia1;
-    private final Estrategia estrategia2;
+    private Estrategia estrategia1;
+    private Estrategia estrategia2;
     private int dimensao;
     private Jogador jogadorRodada;
     private Jogador vencedor;
@@ -27,6 +26,18 @@ public class Jogo implements Serializable {
         this.jogadorRodada = jogador1;
         estrategia1 = new Estrategia(jogador1, new Grelha(dimensao));
         estrategia2 = new Estrategia(jogador2, new Grelha(dimensao));
+    }
+
+    public Jogo(int dimensao) {
+        setDimensao(dimensao);
+    }
+
+    public void setEstrategia2(Estrategia estrategia2) {
+        this.estrategia2 = estrategia2;
+    }
+
+    public void setEstrategia1(Estrategia estrategia1) {
+        this.estrategia1 = estrategia1;
     }
 
     public int getDimensao() {
@@ -64,6 +75,10 @@ public class Jogo implements Serializable {
     }
 
     public Jogador getJogadorProximaRodada(boolean acertou) {
+        if (jogadorRodada == null) {
+            jogadorRodada = estrategia1.getJogador();
+            return jogadorRodada;
+        }
         if (acertou) {
             return jogadorRodada;
         }

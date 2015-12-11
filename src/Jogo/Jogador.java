@@ -5,11 +5,13 @@
  */
 package Jogo;
 
+import java.io.Serializable;
+
 /**
  *
  * @author a1137131
  */
-public class Jogador {
+public class Jogador implements Serializable {
 
     private String nome;
 

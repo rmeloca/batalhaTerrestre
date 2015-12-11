@@ -12,6 +12,7 @@ import Jogo.Alvo.Explosivo;
 import Jogo.Tabuleiro.Campo;
 import Jogo.Tabuleiro.Coordenada;
 import Jogo.Tabuleiro.Grelha;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -20,7 +21,7 @@ import java.util.Random;
  *
  * @author romulo
  */
-public class Estrategia {
+public class Estrategia implements Serializable {
 
     private Jogador jogador;
     private Grelha grelha;
@@ -29,6 +30,12 @@ public class Estrategia {
     public Estrategia(Jogador jogador, Grelha grelha) {
         setJogador(jogador);
         this.grelha = grelha;
+        this.armas = new ArrayList<>();
+    }
+    
+    public Estrategia(Jogador jogador) {
+        setJogador(jogador);
+        this.grelha = new Grelha(10);
         this.armas = new ArrayList<>();
     }
 

@@ -6,13 +6,14 @@
 package Jogo.Alvo;
 
 import Jogo.Tabuleiro.Campo;
+import java.io.Serializable;
 import java.util.List;
 
 /**
  *
  * @author romulo
  */
-public abstract class Objeto {
+public abstract class Objeto implements Serializable {
 
     String imagem;
     List<Campo> campos;

@@ -8,6 +8,7 @@ package Jogo.Tabuleiro;
 import Jogo.Alvo.Arma;
 import Jogo.Alvo.Borda;
 import Jogo.Alvo.Terra;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,7 +16,7 @@ import java.util.List;
  *
  * @author romulo
  */
-public class Grelha {
+public class Grelha implements Serializable {
 
     private Campo[][] campos;
     private int dimensao;

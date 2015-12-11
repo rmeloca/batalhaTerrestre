@@ -18,12 +18,17 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.net.ServerSocket;
+import java.net.Socket;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
 import javax.swing.JTextField;
 import sun.audio.AudioPlayer;
 import sun.audio.AudioStream;
@@ -303,8 +308,7 @@ public class GUI extends JFrame {
         lblImagem.setBounds(0, 0, imagem.getIconWidth(), imagem.getIconHeight());
         add(lblImagem);
 
-        executarMusica("01 - Main Theme.wav");
-
+//        executarMusica("01 - Main Theme.wav");
         btnJogar.addActionListener(new ActionListener() {
 
             @Override
@@ -340,14 +344,14 @@ public class GUI extends JFrame {
         new GUI();
     }
 
-    private static void executarMusica(String nome) {
+    private void executarMusica(String nome) {
         AudioPlayer MGP = AudioPlayer.player;
         AudioStream BGM = null;
-//        try {
-//            BGM = new AudioStream(new FileInputStream("src/Music/" + nome));
-//        } catch (IOException ex) {
-//            ex.printStackTrace();
-//        }
-//        MGP.start(BGM);
+        try {
+            BGM = new AudioStream(new FileInputStream(getClass().getResource("src/Music/" + nome).getFile()));
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+        MGP.start(BGM);
     }
 }
