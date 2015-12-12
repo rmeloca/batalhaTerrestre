@@ -223,7 +223,7 @@ public class GUIServidor extends JFrame {
                         jogador1.setNome(nome1);
 
                         dispose();
-                        jogo.getEstrategia1().dispoeArmas();
+                        jogo.getEstrategiaMinha().dispoeArmas();
 
                         Estrategia estrategia2 = (Estrategia) entrada.readObject();
                         jogo.setEstrategia2(estrategia2);

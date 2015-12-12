@@ -20,10 +20,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.net.ServerSocket;
-import java.net.Socket;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -324,8 +320,8 @@ public class GUI extends JFrame {
                     jogador2.setNome(nome2);
 
                     dispose();
-                    jogo.getEstrategia1().dispoeArmas();
-                    jogo.getEstrategia2().dispoeArmas();
+                    jogo.getEstrategiaMinha().dispoeArmas();
+                    jogo.getEstrategiaInimiga().dispoeArmas();
                     jogo.inicializar();
                     JFrame painelConfronto = new FrameConfronto(jogoController.getJogos().get(0));
                 } else {

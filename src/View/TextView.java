@@ -45,44 +45,44 @@ public class TextView {
 
         System.out.println(jogador1.getNome() + ", escolha suas armas");
 
-        jogo.getEstrategia1().addArma(new Guarani());
-        jogo.getEstrategia1().addArma(new M15());
-        jogo.getEstrategia1().addArma(new M15());
-        jogo.getEstrategia1().addArma(new Astros2020());
-        jogo.getEstrategia1().addArma(new Astros2020());
-        jogo.getEstrategia1().addArma(new M60Patton());
-        jogo.getEstrategia1().addArma(new M60Patton());
-        jogo.getEstrategia1().addArma(new L118());
+        jogo.getEstrategiaMinha().addArma(new Guarani());
+        jogo.getEstrategiaMinha().addArma(new M15());
+        jogo.getEstrategiaMinha().addArma(new M15());
+        jogo.getEstrategiaMinha().addArma(new Astros2020());
+        jogo.getEstrategiaMinha().addArma(new Astros2020());
+        jogo.getEstrategiaMinha().addArma(new M60Patton());
+        jogo.getEstrategiaMinha().addArma(new M60Patton());
+        jogo.getEstrategiaMinha().addArma(new L118());
 
         System.out.print("Movendo arsenal...");
-        jogo.getEstrategia1().dispoeArmas();
+        jogo.getEstrategiaMinha().dispoeArmas();
         System.out.println("Arsenal implantado");
 
         System.out.println(jogador1.getNome() + ", comande suas tropas");
 
         System.out.println(jogador1.getNome() + ", ajuste seus explosivos");
 
-        imprimirGrelha(jogo.getEstrategia1().getGrelha());
+        imprimirGrelha(jogo.getEstrategiaMinha().getGrelha());
         System.out.println("Aguardando embuste inimigo...");
 
         System.out.println(jogador2.getNome() + ", escolha suas armas");
-        jogo.getEstrategia2().addArma(new Guarani());
-        jogo.getEstrategia2().addArma(new M15());
-        jogo.getEstrategia2().addArma(new M15());
-        jogo.getEstrategia2().addArma(new Astros2020());
-        jogo.getEstrategia2().addArma(new M60Patton());
-        jogo.getEstrategia2().addArma(new M60Patton());
-        jogo.getEstrategia2().addArma(new L118());
+        jogo.getEstrategiaInimiga().addArma(new Guarani());
+        jogo.getEstrategiaInimiga().addArma(new M15());
+        jogo.getEstrategiaInimiga().addArma(new M15());
+        jogo.getEstrategiaInimiga().addArma(new Astros2020());
+        jogo.getEstrategiaInimiga().addArma(new M60Patton());
+        jogo.getEstrategiaInimiga().addArma(new M60Patton());
+        jogo.getEstrategiaInimiga().addArma(new L118());
 
         System.out.print("Movendo arsenal...");
-        jogo.getEstrategia2().dispoeArmas();
+        jogo.getEstrategiaInimiga().dispoeArmas();
         System.out.println("Arsenal implantado");
 
         System.out.println(jogador2.getNome() + ", comande suas tropas");
 
         System.out.println(jogador2.getNome() + ", ajuste seus explosivos");
 
-        imprimirGrelha(jogo.getEstrategia2().getGrelha());
+        imprimirGrelha(jogo.getEstrategiaInimiga().getGrelha());
 
         System.out.println("Confronto avistado");
         System.out.print("Camuflando as tropas...");
@@ -134,7 +134,7 @@ public class TextView {
         System.out.println();
 
         for (int i = 0; i < jogo.getDimensao(); i++) {
-            campos = jogo.getEstrategia1().getGrelha().getCampos()[i];
+            campos = jogo.getEstrategiaMinha().getGrelha().getCampos()[i];
             System.out.print(campos[0].getCoordenada().getX());
             for (int j = 0; j < jogo.getDimensao(); j++) {
                 campo = campos[j];
@@ -146,7 +146,7 @@ public class TextView {
                 }
             }
             System.out.print("\t");
-            campos = jogo.getEstrategia2().getGrelha().getCampos()[i];
+            campos = jogo.getEstrategiaInimiga().getGrelha().getCampos()[i];
             System.out.print(campos[0].getCoordenada().getX());
             for (int j = 0; j < jogo.getDimensao(); j++) {
                 campo = campos[j];

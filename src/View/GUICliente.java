@@ -52,12 +52,12 @@ public class GUICliente extends JFrame {
     private JButton btnG;
     private JButton btnN;
     static Socket cliente;
-    Estrategia estrategia2;
+    Estrategia estrategia;
 
     public GUICliente() {
-        Jogador jogador2 = new Jogador("Jogador 2");
+        Jogador jogador2 = new Jogador("Jogador");
 
-        estrategia2 = new Estrategia(jogador2);
+        estrategia = new Estrategia(jogador2);
 
         setTitle("Batalha Terrestre");
 
@@ -67,7 +67,7 @@ public class GUICliente extends JFrame {
         add(btnJogar);
 
         JTextField jtfJogador2;
-        jtfJogador2 = new JTextField("Jogador 2");
+        jtfJogador2 = new JTextField("Jogador");
         jtfJogador2.setBounds(245, 100, 150, 50);
         add(jtfJogador2);
 
@@ -97,37 +97,37 @@ public class GUICliente extends JFrame {
             @Override
             public void actionPerformed(ActionEvent ae) {
                 String arg = ae.getActionCommand();
-                int tamanho = estrategia2.calcTamanhoArmas();
+                int tamanho = estrategia.calcTamanhoArmas();
                 if (arg.equals("M")) {
                     tamanho += 3;
                     M60Patton m = new M60Patton();
                     m.setAtiva(true);
-                    estrategia2.addArma(m);
+                    estrategia.addArma(m);
                     lblQtdArmas2.setText(tamanho + "");
                 } else if (arg.equals("A")) {
                     tamanho += 4;
                     Astros2020 a = new Astros2020();
                     a.setAtiva(true);
-                    estrategia2.addArma(a);
+                    estrategia.addArma(a);
                     lblQtdArmas2.setText(tamanho + "");
                 } else if (arg.equals("G")) {
                     tamanho += 2;
                     Guarani g = new Guarani();
                     g.setAtiva(true);
-                    estrategia2.addArma(g);
+                    estrategia.addArma(g);
                     lblQtdArmas2.setText(tamanho + "");
                 } else if (arg.equals("L")) {
                     tamanho += 1;
                     L118 l = new L118();
                     l.setAtiva(true);
-                    estrategia2.addArma(l);
+                    estrategia.addArma(l);
                     lblQtdArmas2.setText(tamanho + "");
                 } else if (arg.equals("N")) {
                     tamanho += 1;
                     qtdN++;
                     M15 n = new M15();
                     n.setAtiva(true);
-                    estrategia2.addArma(n);
+                    estrategia.addArma(n);
                     lblQtdArmas2.setText(tamanho + "");
                 }
                 if (tamanho > 6) {
@@ -201,8 +201,8 @@ public class GUICliente extends JFrame {
 
                 if (qtd1.equals("10")) {
                     String nome = jtfJogador2.getText();
-                    estrategia2.getJogador().setNome(nome);
-                    estrategia2.dispoeArmas();
+                    estrategia.getJogador().setNome(nome);
+                    estrategia.dispoeArmas();
 
                     dispose();
 
@@ -213,12 +213,13 @@ public class GUICliente extends JFrame {
                         entrada = new ObjectInputStream(cliente.getInputStream());
 
                         saida.flush();
-                        saida.writeObject(estrategia2);
+                        saida.writeObject(estrategia);
 
                         JOptionPane.showMessageDialog(rootPane, "Guerra declarada!\nAo combate");
-                        
+
                         Jogo jogo = (Jogo) entrada.readObject();
-                        JFrame painelConfronto = new FrameConfrontoCliente(cliente, jogo);
+
+                        new FrameConfrontoCliente(entrada, saida, jogo);
 
                     } catch (IOException | ClassNotFoundException ex) {
                         Logger.getLogger(GUICliente.class.getName()).log(Level.SEVERE, null, ex);
@@ -241,7 +242,7 @@ public class GUICliente extends JFrame {
             cliente = new Socket("localhost", 12345);
             new GUICliente();
         } catch (IOException ex) {
-            JOptionPane.showMessageDialog(null, "Solução diplomática encontrada. Inimigo não declarou Guerra!");
+            ex.printStackTrace();
         }
     }
 

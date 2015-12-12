@@ -20,6 +20,7 @@ public class Jogo implements Serializable {
     private int dimensao;
     private Jogador jogadorRodada;
     private Jogador vencedor;
+    public boolean bloqueado;
 
     public Jogo(int dimensao, Jogador jogador1, Jogador jogador2) {
         setDimensao(dimensao);
@@ -30,6 +31,7 @@ public class Jogo implements Serializable {
 
     public Jogo(int dimensao) {
         setDimensao(dimensao);
+        bloqueado = false;
     }
 
     public void setEstrategia2(Estrategia estrategia2) {
@@ -66,11 +68,11 @@ public class Jogo implements Serializable {
         return vencedor;
     }
 
-    public Estrategia getEstrategia1() {
+    public Estrategia getEstrategiaMinha() {
         return estrategia1;
     }
 
-    public Estrategia getEstrategia2() {
+    public Estrategia getEstrategiaInimiga() {
         return estrategia2;
     }
 

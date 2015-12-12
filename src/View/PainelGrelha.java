@@ -5,6 +5,8 @@
  */
 package View;
 
+import Controller.Historico;
+import DAO.DAOHistorico;
 import Jogo.Alvo.Guarani;
 import Jogo.Alvo.Terra;
 import Jogo.Jogador;
@@ -68,13 +70,37 @@ public class PainelGrelha extends JPanel {
                 btnCampo.setIcon(new ImageIcon(getClass().getResource(campo.getObjeto().getImagem())));
 
                 if (frameConfronto.jogo.haVencedor()) {
+                    DAOHistorico daoHistorico = new DAOHistorico();
+                    Historico historico = new Historico();
+                    historico.setJogador1(frameConfronto.jogo.getEstrategiaMinha().getJogador().getNome());
+                    historico.setJogador2(frameConfronto.jogo.getEstrategiaInimiga().getJogador().getNome());
+                    historico.setVencedor(jogador.getNome());
+                    daoHistorico.inserir(historico);
+
+                    List<Historico> lista = daoHistorico.list();
+                    String resultado = "";
+                    for (Historico historico1 : lista) {
+                        resultado += "Jogador1: ";
+                        resultado += historico1.getJogador1();
+                        resultado += "\n";
+                        resultado += "Jogador2: ";
+                        resultado += historico1.getJogador2();
+                        resultado += "\n";
+                        resultado += "Vencedor: ";
+                        resultado += historico1.getVencedor();
+                        resultado += "\n";
+                        resultado += "\n";
+                    }
+                    
+                    JOptionPane.showMessageDialog(null, resultado);
+
                     frameConfronto.painelGrelha1.desabilitarGrelha();
                     frameConfronto.painelGrelha2.desabilitarGrelha();
                     if (JOptionPane.showConfirmDialog(null, jogador.getNome() + " Venceu!") == JOptionPane.OK_OPTION) {
                         frameConfronto.dispose();
                         new GUI();
                     }
-                } else if (jogador.equals(frameConfronto.jogo.getEstrategia1().getJogador())) {
+                } else if (jogador.equals(frameConfronto.jogo.getEstrategiaMinha().getJogador())) {
                     frameConfronto.painelGrelha1.atualizarGrelha();
                     frameConfronto.painelGrelha2.desabilitarGrelha();
                 } else {

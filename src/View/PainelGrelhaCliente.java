@@ -16,7 +16,6 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
-import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
@@ -52,7 +51,7 @@ public class PainelGrelhaCliente extends JPanel {
             public void actionPerformed(ActionEvent e) {
                 ObjectOutputStream saida;
                 try {
-                    saida = new ObjectOutputStream(FrameConfrontoCliente.cliente.getOutputStream());
+                    saida = FrameConfrontoCliente.outputStream;
 
                     String[] action;
                     List<Campo> camposSelecionados;
@@ -85,18 +84,16 @@ public class PainelGrelhaCliente extends JPanel {
                     jogador = frameConfronto.jogo.getJogadorProximaRodada(acertou);
 
                     if (frameConfronto.jogo.haVencedor()) {
-                        frameConfronto.painelMinhaGrelha.desabilitarGrelha();
+                        frameConfronto.painelGrelhaMinha.desabilitarGrelha();
                         frameConfronto.painelGrelhaInimiga.desabilitarGrelha();
                         if (JOptionPane.showConfirmDialog(null, jogador.getNome() + " Venceu!") == JOptionPane.OK_OPTION) {
                             frameConfronto.dispose();
                             new GUI();
                         }
                     }
-                    if (jogador.equals(frameConfronto.jogo.getEstrategia1().getJogador())) {
-//                        camposSelecionados = (List<Campo>) entrada.readObject();
-                        frameConfronto.atualizarToolBar(frameConfronto.jogo.getEstrategia1());
-                    } else {
+                    if (jogador.equals(frameConfronto.jogo.getEstrategiaInimiga().getJogador())) {
                         desabilitarGrelha();
+                        //aguarda thread de escuta permitir que eu jogue
                     }
                 } catch (IOException ex) {
                     Logger.getLogger(PainelGrelhaServidor.class.getName()).log(Level.SEVERE, null, ex);
@@ -145,7 +142,7 @@ public class PainelGrelhaCliente extends JPanel {
         }
     }
 
-    protected void desabilitarGrelha() {
+    public void desabilitarGrelha() {
         JButton btnCampo;
         for (int i = 0; i < grelha.getDimensao(); i++) {
             for (int j = 0; j < grelha.getDimensao(); j++) {
@@ -155,7 +152,7 @@ public class PainelGrelhaCliente extends JPanel {
         }
     }
 
-    protected void habilitarGrelha() {
+    public void habilitarGrelha() {
         JButton btnCampo;
         for (int i = 0; i < grelha.getDimensao(); i++) {
             for (int j = 0; j < grelha.getDimensao(); j++) {

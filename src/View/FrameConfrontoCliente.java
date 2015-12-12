@@ -5,22 +5,21 @@
  */
 package View;
 
+import Controller.Escutar;
 import Jogo.Alvo.CarroCombate;
 import Jogo.Estrategia;
+import Jogo.Jogador;
 import Jogo.Jogo;
-import Jogo.Tabuleiro.Campo;
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
-import java.io.IOException;
 import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.net.Socket;
-import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JToolBar;
 
@@ -30,13 +29,14 @@ import javax.swing.JToolBar;
  */
 public class FrameConfrontoCliente extends JFrame {
 
-    protected PainelGrelhaCliente painelGrelhaInimiga;
-    protected PainelGrelhaCliente painelMinhaGrelha;
-    protected JToolBar toolBar;
-    protected Jogo jogo;
-    protected static Socket cliente;
+    public PainelGrelhaCliente painelGrelhaInimiga;
+    public PainelGrelhaCliente painelGrelhaMinha;
+    public JToolBar toolBar;
+    public Jogo jogo;
+    protected static ObjectInputStream inputStream;
+    protected static ObjectOutputStream outputStream;
 
-    public FrameConfrontoCliente(Socket cliente, Jogo jogo) {
+    public FrameConfrontoCliente(ObjectInputStream inputStream, ObjectOutputStream outputStream, Jogo jogo) {
         setTitle("Confronto Cliente");
 
         JPanel painelPrincipal;
@@ -45,23 +45,29 @@ public class FrameConfrontoCliente extends JFrame {
         painelPrincipal = new JPanel();
         toolBar = new JToolBar();
 
-        FrameConfrontoCliente.cliente = cliente;
         this.jogo = jogo;
+        FrameConfrontoCliente.inputStream = inputStream;
+        FrameConfrontoCliente.outputStream = outputStream;
+
+        Escutar threadEscutarSocket = new Escutar(inputStream, this);
+        threadEscutarSocket.start();
 
         painelPrincipal.setLayout(new GridLayout(1, 2));
-        painelMinhaGrelha = new PainelGrelhaCliente(jogo.getEstrategia2().getGrelha());
-        painelGrelhaInimiga = new PainelGrelhaCliente(jogo.getEstrategia1().getGrelha());
+        painelGrelhaMinha = new PainelGrelhaCliente(jogo.getEstrategiaMinha().getGrelha());
+        painelGrelhaInimiga = new PainelGrelhaCliente(jogo.getEstrategiaInimiga().getGrelha());
 
-        painelMinhaGrelha.setFrameConfronto(this);
+        painelGrelhaMinha.setFrameConfronto(this);
         painelGrelhaInimiga.setFrameConfronto(this);
 
-        painelPrincipal.add(painelMinhaGrelha);
         painelPrincipal.add(painelGrelhaInimiga);
+        painelPrincipal.add(painelGrelhaMinha);
 
-        painelGrelhaInimiga.atualizarGrelha();
-        painelGrelhaInimiga.desabilitarGrelha();
-
-        atualizarToolBar(jogo.getEstrategia1());
+        painelGrelhaMinha.atualizarGrelha();
+//        painelGrelhaMinha.desabilitarGrelha();
+        if (jogo.bloqueado) {
+//            painelGrelhaMinha.desabilitarGrelha();
+        }
+        atualizarToolBar(jogo.getEstrategiaInimiga());
 
         add(painelPrincipal, BorderLayout.CENTER);
         add(toolBar, BorderLayout.NORTH);

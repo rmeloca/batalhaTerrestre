@@ -63,22 +63,22 @@ public class Servidor {
 
             System.out.println(jogador1.getNome() + ", escolha suas armas");
             jogo.setEstrategia1(new Estrategia(jogador1));
-            jogo.getEstrategia1().addArma(new Guarani());
-            jogo.getEstrategia1().addArma(new M15());
-            jogo.getEstrategia1().addArma(new M15());
-            jogo.getEstrategia1().addArma(new Astros2020());
-            jogo.getEstrategia1().addArma(new Astros2020());
-            jogo.getEstrategia1().addArma(new M60Patton());
-            jogo.getEstrategia1().addArma(new M60Patton());
-            jogo.getEstrategia1().addArma(new L118());
+            jogo.getEstrategiaMinha().addArma(new Guarani());
+            jogo.getEstrategiaMinha().addArma(new M15());
+            jogo.getEstrategiaMinha().addArma(new M15());
+            jogo.getEstrategiaMinha().addArma(new Astros2020());
+            jogo.getEstrategiaMinha().addArma(new Astros2020());
+            jogo.getEstrategiaMinha().addArma(new M60Patton());
+            jogo.getEstrategiaMinha().addArma(new M60Patton());
+            jogo.getEstrategiaMinha().addArma(new L118());
 
             System.out.print("Movendo arsenal...");
-            jogo.getEstrategia1().dispoeArmas();
+            jogo.getEstrategiaMinha().dispoeArmas();
             System.out.println("Arsenal implantado");
             System.out.println(jogador1.getNome() + ", comande suas tropas");
             System.out.println(jogador1.getNome() + ", ajuste seus explosivos");
 
-            imprimirGrelha(jogo.getEstrategia1().getGrelha());
+            imprimirGrelha(jogo.getEstrategiaMinha().getGrelha());
             System.out.println("Aguardando embuste inimigo...");
 
             Estrategia estrategia2 = (Estrategia) entrada.readObject();

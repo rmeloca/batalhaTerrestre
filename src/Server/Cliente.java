@@ -79,7 +79,7 @@ public class Cliente {
                 saida.flush();
                 saida.writeObject(coordenada);
                 campos.clear();
-                campos.add(jogo.getEstrategia1().getGrelha().getCampo(coordenada));
+                campos.add(jogo.getEstrategiaMinha().getGrelha().getCampo(coordenada));
                 boolean acertou = guarani.atirar(campos) > 0;
                 while (jogo.getJogadorProximaRodada(acertou).equals(jogador2)) {
 

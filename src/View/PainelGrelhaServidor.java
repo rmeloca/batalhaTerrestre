@@ -93,9 +93,9 @@ public class PainelGrelhaServidor extends JPanel {
                             new GUI();
                         }
                     }
-                    if (jogador.equals(frameConfronto.jogo.getEstrategia2().getJogador())) {
+                    if (jogador.equals(frameConfronto.jogo.getEstrategiaInimiga().getJogador())) {
 //                        camposSelecionados = (List<Campo>) entrada.readObject();
-                        frameConfronto.atualizarToolBar(frameConfronto.jogo.getEstrategia1());
+                        frameConfronto.atualizarToolBar(frameConfronto.jogo.getEstrategiaMinha());
                     } else {
                         desabilitarGrelha();
                     }

@@ -14,6 +14,7 @@ import java.io.Serializable;
 public class Jogador implements Serializable {
 
     private String nome;
+    private int id;
 
     public Jogador(String nome) {
         setNome(nome);
@@ -29,9 +30,13 @@ public class Jogador implements Serializable {
         }
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
     @Override
     public boolean equals(Object obj) {
-        return ((Jogador) obj).nome.equals(nome);
+        return ((Jogador) obj).id == id;
     }
 
 }
