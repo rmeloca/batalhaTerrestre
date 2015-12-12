@@ -58,7 +58,9 @@ public class GUI extends JFrame {
     public GUI() {
         jogoController = new JogoController();
         Jogador jogador1 = new Jogador("Jogador 1");
+        jogador1.setId(1);
         Jogador jogador2 = new Jogador("Jogador 2");
+        jogador1.setId(2);
 
         Jogo jogo = new Jogo(10, jogador1, jogador2);
         jogoController.addJogo(jogo);

@@ -40,6 +40,7 @@ public class PainelGrelha extends JPanel {
         int dimensao = grelha.getDimensao();
         setLayout(new GridLayout(dimensao, dimensao));
         campos = new JButton[dimensao][dimensao];
+        DAOHistorico daoHistorico = new DAOHistorico();
 
         campoActionListener = new ActionListener() {
             JButton btnCampo;
@@ -70,7 +71,6 @@ public class PainelGrelha extends JPanel {
                 btnCampo.setIcon(new ImageIcon(getClass().getResource(campo.getObjeto().getImagem())));
 
                 if (frameConfronto.jogo.haVencedor()) {
-                    DAOHistorico daoHistorico = new DAOHistorico();
                     Historico historico = new Historico();
                     historico.setJogador1(frameConfronto.jogo.getEstrategiaMinha().getJogador().getNome());
                     historico.setJogador2(frameConfronto.jogo.getEstrategiaInimiga().getJogador().getNome());
@@ -91,12 +91,12 @@ public class PainelGrelha extends JPanel {
                         resultado += "\n";
                         resultado += "\n";
                     }
-                    
+
                     JOptionPane.showMessageDialog(null, resultado);
 
                     frameConfronto.painelGrelha1.desabilitarGrelha();
                     frameConfronto.painelGrelha2.desabilitarGrelha();
-                    if (JOptionPane.showConfirmDialog(null, jogador.getNome() + " Venceu!") == JOptionPane.OK_OPTION) {
+                    if (JOptionPane.showConfirmDialog(null, jogador.getNome() + " Venceu!\nRevanche?") == JOptionPane.OK_OPTION) {
                         frameConfronto.dispose();
                         new GUI();
                     }
