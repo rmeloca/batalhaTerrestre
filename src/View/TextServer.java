@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Server;
+package View;
 
 import Controller.JogoController;
 import Jogo.Alvo.Astros2020;
@@ -26,7 +26,7 @@ import javax.swing.JOptionPane;
  *
  * @author romulo
  */
-public class Servidor {
+public class TextServer {
 
     private static JogoController jogoController;
 

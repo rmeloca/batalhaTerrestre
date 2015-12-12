@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Server;
+package View;
 
 import Jogo.Alvo.Astros2020;
 import Jogo.Alvo.Guarani;
@@ -28,7 +28,7 @@ import javax.swing.JOptionPane;
  *
  * @author romulo
  */
-public class Cliente {
+public class TextClient {
 
     public static void main(String[] args) {
         try {

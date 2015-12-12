@@ -38,7 +38,7 @@ import sun.audio.AudioStream;
  *
  * @author a1137131
  */
-public class GUICliente extends JFrame {
+public class GUIClient extends JFrame {
 
     private JButton btnJogar;
     private JLabel lblImagem;
@@ -54,7 +54,7 @@ public class GUICliente extends JFrame {
     static Socket cliente;
     Estrategia estrategia;
 
-    public GUICliente() {
+    public GUIClient() {
         Jogador jogador2 = new Jogador("Jogador");
 
         estrategia = new Estrategia(jogador2);
@@ -222,7 +222,7 @@ public class GUICliente extends JFrame {
                         new FrameConfrontoCliente(entrada, saida, jogo);
 
                     } catch (IOException | ClassNotFoundException ex) {
-                        Logger.getLogger(GUICliente.class.getName()).log(Level.SEVERE, null, ex);
+                        Logger.getLogger(GUIClient.class.getName()).log(Level.SEVERE, null, ex);
                     }
                 } else {
                     JOptionPane.showMessageDialog(null, "É necessário utilizar os 10 espaços disponíveis");
@@ -240,7 +240,7 @@ public class GUICliente extends JFrame {
     public static void main(String[] args) {
         try {
             cliente = new Socket("localhost", 12345);
-            new GUICliente();
+            new GUIClient();
         } catch (IOException ex) {
             ex.printStackTrace();
         }

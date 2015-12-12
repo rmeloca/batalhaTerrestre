@@ -96,7 +96,7 @@ public class PainelGrelhaCliente extends JPanel {
                         //aguarda thread de escuta permitir que eu jogue
                     }
                 } catch (IOException ex) {
-                    Logger.getLogger(PainelGrelhaServidor.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(PainelGrelhaCliente.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         };
