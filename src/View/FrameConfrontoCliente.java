@@ -29,8 +29,8 @@ import javax.swing.JToolBar;
  */
 public class FrameConfrontoCliente extends JFrame {
 
-    public PainelGrelhaCliente painelGrelhaInimiga;
     public PainelGrelhaCliente painelGrelhaMinha;
+    public PainelGrelhaCliente painelGrelhaInimiga;
     public JToolBar toolBar;
     public Jogo jogo;
     protected static ObjectInputStream inputStream;
@@ -53,20 +53,19 @@ public class FrameConfrontoCliente extends JFrame {
         threadEscutarSocket.start();
 
         painelPrincipal.setLayout(new GridLayout(1, 2));
-        painelGrelhaMinha = new PainelGrelhaCliente(jogo.getEstrategiaMinha().getGrelha());
         painelGrelhaInimiga = new PainelGrelhaCliente(jogo.getEstrategiaInimiga().getGrelha());
+        painelGrelhaMinha = new PainelGrelhaCliente(jogo.getEstrategiaMinha().getGrelha());
 
-        painelGrelhaMinha.setFrameConfronto(this);
         painelGrelhaInimiga.setFrameConfronto(this);
+        painelGrelhaMinha.setFrameConfronto(this);
 
-        painelPrincipal.add(painelGrelhaInimiga);
         painelPrincipal.add(painelGrelhaMinha);
+        painelPrincipal.add(painelGrelhaInimiga);
 
-        painelGrelhaMinha.atualizarGrelha();
-//        painelGrelhaMinha.desabilitarGrelha();
-        if (jogo.bloqueado) {
-//            painelGrelhaMinha.desabilitarGrelha();
+        if (!jogo.bloqueado) {
+            painelGrelhaInimiga.atualizarGrelha();
         }
+
         atualizarToolBar(jogo.getEstrategiaInimiga());
 
         add(painelPrincipal, BorderLayout.CENTER);

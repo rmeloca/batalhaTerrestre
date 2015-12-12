@@ -84,8 +84,8 @@ public class PainelGrelhaCliente extends JPanel {
                     jogador = frameConfronto.jogo.getJogadorProximaRodada(acertou);
 
                     if (frameConfronto.jogo.haVencedor()) {
-                        frameConfronto.painelGrelhaMinha.desabilitarGrelha();
                         frameConfronto.painelGrelhaInimiga.desabilitarGrelha();
+                        frameConfronto.painelGrelhaMinha.desabilitarGrelha();
                         if (JOptionPane.showConfirmDialog(null, jogador.getNome() + " Venceu!") == JOptionPane.OK_OPTION) {
                             frameConfronto.dispose();
                             new GUI();
@@ -111,7 +111,7 @@ public class PainelGrelhaCliente extends JPanel {
                 btnCampo.addActionListener(campoActionListener);
                 btnCampo.setActionCommand(i + "," + j);
                 btnCampo.setText(campo.getObjeto().toString());
-                btnCampo.setEnabled(false);
+//                btnCampo.setEnabled(false);
                 btnCampo.setBackground(Color.BLUE);
                 btnCampo.setIcon(new ImageIcon(getClass().getResource(campo.getObjeto().getImagem())));
                 add(btnCampo);

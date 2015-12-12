@@ -55,9 +55,9 @@ public class Server {
             saidaJogador1.flush();
             saidaJogador1.writeObject(jogo);
 
-            Estrategia auxiliar = estrategia1;
-            jogo.setEstrategia1(estrategia2);
-            jogo.setEstrategia2(auxiliar);
+//            Estrategia auxiliar = estrategia1;
+//            jogo.setEstrategia1(estrategia2);
+//            jogo.setEstrategia2(auxiliar);
             jogo.bloqueado = true;
 
             saidaJogador2.flush();

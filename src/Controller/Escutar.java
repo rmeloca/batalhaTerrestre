@@ -48,15 +48,15 @@ public class Escutar extends Thread {
             jogador = frameConfronto.jogo.getJogadorProximaRodada(acertou);
 
             if (frameConfronto.jogo.haVencedor()) {
-                frameConfronto.painelGrelhaMinha.desabilitarGrelha();
                 frameConfronto.painelGrelhaInimiga.desabilitarGrelha();
+                frameConfronto.painelGrelhaMinha.desabilitarGrelha();
                 if (JOptionPane.showConfirmDialog(null, jogador.getNome() + " Venceu!") == JOptionPane.OK_OPTION) {
                     frameConfronto.dispose();
                     new GUI();
                 }
             }
             if (!acertou) {
-                frameConfronto.painelGrelhaMinha.habilitarGrelha();
+                frameConfronto.painelGrelhaInimiga.habilitarGrelha();
             }
         } catch (IOException | ClassNotFoundException ex) {
             Logger.getLogger(Escutar.class.getName()).log(Level.SEVERE, null, ex);
