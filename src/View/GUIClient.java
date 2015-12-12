@@ -206,20 +206,20 @@ public class GUIClient extends JFrame {
 
                     dispose();
 
-                    ObjectOutputStream saida;
-                    ObjectInputStream entrada;
+                    ObjectOutputStream outputStream;
+                    ObjectInputStream inputStream;
                     try {
-                        saida = new ObjectOutputStream(cliente.getOutputStream());
-                        entrada = new ObjectInputStream(cliente.getInputStream());
+                        outputStream = new ObjectOutputStream(cliente.getOutputStream());
+                        inputStream = new ObjectInputStream(cliente.getInputStream());
 
-                        saida.flush();
-                        saida.writeObject(estrategia);
+                        outputStream.flush();
+                        outputStream.writeObject(estrategia);
 
                         JOptionPane.showMessageDialog(rootPane, "Guerra declarada!\nAo combate");
 
-                        Jogo jogo = (Jogo) entrada.readObject();
+                        Jogo jogo = (Jogo) inputStream.readObject();
 
-                        new FrameConfrontoCliente(entrada, saida, jogo);
+                        new FrameConfrontoCliente(inputStream, outputStream, jogo);
 
                     } catch (IOException | ClassNotFoundException ex) {
                         Logger.getLogger(GUIClient.class.getName()).log(Level.SEVERE, null, ex);

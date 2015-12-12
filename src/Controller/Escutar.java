@@ -12,7 +12,6 @@ import View.FrameConfrontoCliente;
 import View.GUI;
 import java.io.IOException;
 import java.io.ObjectInputStream;
-import java.net.Socket;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -34,18 +33,15 @@ public class Escutar extends Thread {
 
     public Escutar(ObjectInputStream inputStream, FrameConfrontoCliente frameConfrontoCliente) {
         this.frameConfronto = frameConfrontoCliente;
-        guarani = new Guarani();
         entrada = inputStream;
+        guarani = new Guarani();
     }
 
     @Override
     public void run() {
         try {
-
             camposSelecionados = (List<Campo>) entrada.readObject();
 
-//            frameConfronto.jogo.
-//            camposSelecionados.get(0).getCoordenada()
             retorno = guarani.atirar(camposSelecionados);
             acertou = retorno > 0 || retorno == -1;
 

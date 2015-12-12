@@ -91,7 +91,7 @@ public class PainelGrelhaCliente extends JPanel {
                             new GUI();
                         }
                     }
-                    if (jogador.equals(frameConfronto.jogo.getEstrategiaInimiga().getJogador())) {
+                    if (!acertou) {
                         desabilitarGrelha();
                         //aguarda thread de escuta permitir que eu jogue
                     }
