@@ -1,6 +1,6 @@
 package DAO;
 
-import Controller.Historico;
+import Model.Historico;
 
 public class DAOHistorico extends DAOGenerico<Historico> {
 

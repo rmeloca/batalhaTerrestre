@@ -4,10 +4,9 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
 
-public class DAOGenerico<T> {
+public abstract class DAOGenerico<T> {
 
     public static EntityManager em = Persistence.createEntityManagerFactory("UP").createEntityManager();
-
     private Class classe;
 
     public DAOGenerico(Class classe) {

@@ -9,8 +9,8 @@ import Jogo.Alvo.Guarani;
 import Jogo.Jogador;
 import Jogo.Tabuleiro.Campo;
 import Jogo.Tabuleiro.Coordenada;
-import View.FrameConfrontoCliente;
-import View.GUIClient;
+import View.Cliente.FrameConfrontoCliente;
+import View.Cliente.GUICliente;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.util.ArrayList;
@@ -63,7 +63,7 @@ public class Escutar extends Thread {
                     frameConfronto.painelGrelhaMinha.desabilitarGrelha();
                     if (JOptionPane.showConfirmDialog(null, jogador.getNome() + " Venceu!\nRevanche?") == JOptionPane.OK_OPTION) {
                         frameConfronto.dispose();
-                        new GUIClient();
+                        new GUICliente();
                     }
                     break;
                 }
