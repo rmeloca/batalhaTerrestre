@@ -88,6 +88,7 @@ public class PainelGrelhaCliente extends JPanel {
                         } else {
                             JOptionPane.showConfirmDialog(null, frameConfronto.jogo.getEstrategia2().getJogador().getNome() + " Venceu!\n");
                         }
+                        frameConfronto.dispose();
                         System.exit(0);
                     }
                     if (!acertou) {
