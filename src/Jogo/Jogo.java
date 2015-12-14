@@ -68,11 +68,11 @@ public class Jogo implements Serializable {
         return vencedor;
     }
 
-    public Estrategia getEstrategiaMinha() {
+    public Estrategia getEstrategia1() {
         return estrategia1;
     }
 
-    public Estrategia getEstrategiaInimiga() {
+    public Estrategia getEstrategia2() {
         return estrategia2;
     }
 

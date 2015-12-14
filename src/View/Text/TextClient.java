@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package View;
+package View.Text;
 
 import Jogo.Alvo.Astros2020;
 import Jogo.Alvo.Guarani;
@@ -15,8 +15,8 @@ import Jogo.Jogador;
 import Jogo.Jogo;
 import Jogo.Tabuleiro.Campo;
 import Jogo.Tabuleiro.Coordenada;
-import static View.TextView.imprimirGrelha;
-import static View.TextView.imprimirJogo;
+import static View.Text.TextView.imprimirGrelha;
+import static View.Text.TextView.imprimirJogo;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
@@ -79,7 +79,7 @@ public class TextClient {
                 saida.flush();
                 saida.writeObject(coordenada);
                 campos.clear();
-                campos.add(jogo.getEstrategiaMinha().getGrelha().getCampo(coordenada));
+                campos.add(jogo.getEstrategia1().getGrelha().getCampo(coordenada));
                 boolean acertou = guarani.atirar(campos) > 0;
                 while (jogo.getJogadorProximaRodada(acertou).equals(jogador2)) {
 

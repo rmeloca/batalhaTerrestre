@@ -51,7 +51,7 @@ public class GUICliente extends JFrame {
     private JButton btnL;
     private JButton btnG;
     private JButton btnN;
-    static Socket cliente;
+    private static Socket cliente;
     Estrategia estrategia;
 
     public GUICliente() {
@@ -216,7 +216,7 @@ public class GUICliente extends JFrame {
                         outputStream.writeObject(estrategia);
 
                         Jogo jogo = (Jogo) inputStream.readObject();
-                        
+
                         new FrameConfrontoCliente(inputStream, outputStream, jogo);
 
                     } catch (IOException | ClassNotFoundException ex) {
@@ -236,7 +236,7 @@ public class GUICliente extends JFrame {
 
     public static void main(String[] args) {
         try {
-            cliente = new Socket("localhost", 12345);
+            cliente = new Socket("192.168.43.75", 12345);
             new GUICliente();
         } catch (IOException ex) {
             ex.printStackTrace();

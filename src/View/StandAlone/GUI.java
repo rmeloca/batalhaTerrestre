@@ -322,8 +322,8 @@ public class GUI extends JFrame {
                     jogador2.setNome(nome2);
 
                     dispose();
-                    jogo.getEstrategiaMinha().dispoeArmas();
-                    jogo.getEstrategiaInimiga().dispoeArmas();
+                    jogo.getEstrategia1().dispoeArmas();
+                    jogo.getEstrategia2().dispoeArmas();
                     jogo.inicializar();
                     JFrame painelConfronto = new FrameConfronto(jogoController.getJogos().get(0));
                 } else {

@@ -39,8 +39,8 @@ public class FrameConfronto extends JFrame {
         toolBar = new JToolBar();
 
         painelPrincipal.setLayout(new GridLayout(1, 2));
-        painelGrelha1 = new PainelGrelha(jogo.getEstrategiaMinha().getGrelha());
-        painelGrelha2 = new PainelGrelha(jogo.getEstrategiaInimiga().getGrelha());
+        painelGrelha1 = new PainelGrelha(jogo.getEstrategia1().getGrelha());
+        painelGrelha2 = new PainelGrelha(jogo.getEstrategia2().getGrelha());
 
         painelGrelha1.setFrameConfronto(this);
         painelGrelha2.setFrameConfronto(this);
@@ -50,7 +50,7 @@ public class FrameConfronto extends JFrame {
 
         painelGrelha1.atualizarGrelha();
         painelGrelha2.desabilitarGrelha();
-        atualizarToolBar(jogo.getEstrategiaMinha().getJogador());
+        atualizarToolBar(jogo.getEstrategia1().getJogador());
 
         add(painelPrincipal, BorderLayout.CENTER);
         add(toolBar, BorderLayout.NORTH);

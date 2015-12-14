@@ -50,8 +50,8 @@ public class FrameConfrontoCliente extends JFrame {
         threadEscutarSocket.start();
 
         painelPrincipal.setLayout(new GridLayout(1, 2));
-        painelGrelhaMinha = new PainelGrelhaCliente(jogo.getEstrategiaMinha().getGrelha());
-        painelGrelhaInimiga = new PainelGrelhaCliente(jogo.getEstrategiaInimiga().getGrelha());
+        painelGrelhaMinha = new PainelGrelhaCliente(jogo.getEstrategia1().getGrelha());
+        painelGrelhaInimiga = new PainelGrelhaCliente(jogo.getEstrategia2().getGrelha());
 
         painelGrelhaInimiga.setFrameConfronto(this);
         painelGrelhaMinha.setFrameConfronto(this);
@@ -65,7 +65,7 @@ public class FrameConfrontoCliente extends JFrame {
             painelGrelhaInimiga.desabilitarGrelha();
         }
 
-        atualizarToolBar(jogo.getEstrategiaInimiga());
+        atualizarToolBar(jogo.getEstrategia2());
 
         add(painelPrincipal, BorderLayout.CENTER);
         add(toolBar, BorderLayout.NORTH);

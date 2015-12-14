@@ -5,7 +5,6 @@
  */
 package Server;
 
-import Controller.Transmissao;
 import Jogo.Estrategia;
 import Jogo.Jogo;
 import java.io.IOException;

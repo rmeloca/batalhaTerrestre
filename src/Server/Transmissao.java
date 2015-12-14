@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Controller;
+package Server;
 
 import Jogo.Tabuleiro.Coordenada;
 import java.io.IOException;
@@ -18,9 +18,8 @@ import java.util.logging.Logger;
  */
 public class Transmissao extends Thread {
 
-    ObjectInputStream entrada;
-    ObjectOutputStream saida;
-    Coordenada coordenada;
+    private final ObjectInputStream entrada;
+    private final ObjectOutputStream saida;
 
     public Transmissao(ObjectInputStream origemInputStream, ObjectOutputStream destinoOutputStream) {
         entrada = origemInputStream;
@@ -29,6 +28,7 @@ public class Transmissao extends Thread {
 
     @Override
     public void run() {
+        Coordenada coordenada;
         try {
             while (true) {
                 coordenada = (Coordenada) entrada.readObject();

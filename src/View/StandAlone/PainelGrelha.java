@@ -72,8 +72,8 @@ public class PainelGrelha extends JPanel {
 
                 if (frameConfronto.jogo.haVencedor()) {
                     Historico historico = new Historico();
-                    historico.setJogador1(frameConfronto.jogo.getEstrategiaMinha().getJogador().getNome());
-                    historico.setJogador2(frameConfronto.jogo.getEstrategiaInimiga().getJogador().getNome());
+                    historico.setJogador1(frameConfronto.jogo.getEstrategia1().getJogador().getNome());
+                    historico.setJogador2(frameConfronto.jogo.getEstrategia2().getJogador().getNome());
                     historico.setVencedor(jogador.getNome());
                     daoHistorico.inserir(historico);
 
@@ -100,7 +100,7 @@ public class PainelGrelha extends JPanel {
                         frameConfronto.dispose();
                         new GUI();
                     }
-                } else if (jogador.equals(frameConfronto.jogo.getEstrategiaMinha().getJogador())) {
+                } else if (jogador.equals(frameConfronto.jogo.getEstrategia1().getJogador())) {
                     frameConfronto.painelGrelha1.atualizarGrelha();
                     frameConfronto.painelGrelha2.desabilitarGrelha();
                 } else {

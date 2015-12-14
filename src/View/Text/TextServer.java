@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package View;
+package View.Text;
 
 import Controller.JogoController;
 import Jogo.Alvo.Astros2020;
@@ -14,8 +14,8 @@ import Jogo.Alvo.M60Patton;
 import Jogo.Estrategia;
 import Jogo.Jogador;
 import Jogo.Jogo;
-import static View.TextView.imprimirGrelha;
-import static View.TextView.imprimirJogo;
+import static View.Text.TextView.imprimirGrelha;
+import static View.Text.TextView.imprimirJogo;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.ServerSocket;
@@ -63,22 +63,22 @@ public class TextServer {
 
             System.out.println(jogador1.getNome() + ", escolha suas armas");
             jogo.setEstrategia1(new Estrategia(jogador1));
-            jogo.getEstrategiaMinha().addArma(new Guarani());
-            jogo.getEstrategiaMinha().addArma(new M15());
-            jogo.getEstrategiaMinha().addArma(new M15());
-            jogo.getEstrategiaMinha().addArma(new Astros2020());
-            jogo.getEstrategiaMinha().addArma(new Astros2020());
-            jogo.getEstrategiaMinha().addArma(new M60Patton());
-            jogo.getEstrategiaMinha().addArma(new M60Patton());
-            jogo.getEstrategiaMinha().addArma(new L118());
+            jogo.getEstrategia1().addArma(new Guarani());
+            jogo.getEstrategia1().addArma(new M15());
+            jogo.getEstrategia1().addArma(new M15());
+            jogo.getEstrategia1().addArma(new Astros2020());
+            jogo.getEstrategia1().addArma(new Astros2020());
+            jogo.getEstrategia1().addArma(new M60Patton());
+            jogo.getEstrategia1().addArma(new M60Patton());
+            jogo.getEstrategia1().addArma(new L118());
 
             System.out.print("Movendo arsenal...");
-            jogo.getEstrategiaMinha().dispoeArmas();
+            jogo.getEstrategia1().dispoeArmas();
             System.out.println("Arsenal implantado");
             System.out.println(jogador1.getNome() + ", comande suas tropas");
             System.out.println(jogador1.getNome() + ", ajuste seus explosivos");
 
-            imprimirGrelha(jogo.getEstrategiaMinha().getGrelha());
+            imprimirGrelha(jogo.getEstrategia1().getGrelha());
             System.out.println("Aguardando embuste inimigo...");
 
             Estrategia estrategia2 = (Estrategia) entrada.readObject();
