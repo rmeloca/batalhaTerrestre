@@ -18,16 +18,12 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.FileInputStream;
-import java.io.IOException;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
-import sun.audio.AudioPlayer;
-import sun.audio.AudioStream;
 
 /**
  *
@@ -325,7 +321,7 @@ public class GUI extends JFrame {
                     jogo.getEstrategia1().dispoeArmas();
                     jogo.getEstrategia2().dispoeArmas();
                     jogo.inicializar();
-                    JFrame painelConfronto = new FrameConfronto(jogoController.getJogos().get(0));
+                    new FrameConfronto(jogoController.getJogos().get(0));
                 } else {
                     JOptionPane.showMessageDialog(null, "É necessário utilizar os 10 espaços disponíveis");
                 }
@@ -340,16 +336,5 @@ public class GUI extends JFrame {
 
     public static void main(String[] args) {
         new GUI();
-    }
-
-    private void executarMusica(String nome) {
-        AudioPlayer MGP = AudioPlayer.player;
-        AudioStream BGM = null;
-        try {
-            BGM = new AudioStream(new FileInputStream(getClass().getResource("src/Music/" + nome).getFile()));
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
-        MGP.start(BGM);
     }
 }

@@ -63,7 +63,6 @@ public class Escutar extends Thread {
                     frameConfronto.painelGrelhaMinha.desabilitarGrelha();
                     if (JOptionPane.showConfirmDialog(null, jogador.getNome() + " Venceu!\nRevanche?") == JOptionPane.OK_OPTION) {
                         frameConfronto.dispose();
-                        new GUICliente();
                     }
                     break;
                 }

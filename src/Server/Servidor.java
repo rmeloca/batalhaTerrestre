@@ -32,7 +32,9 @@ public class Servidor {
             System.out.println("Servidor ouvindo a porta 12345");
             while (true) {
                 Socket jogador1 = servidor.accept();
+                System.out.println("Cliente conectado: " + jogador1.getInetAddress().getHostAddress());
                 Socket jogador2 = servidor.accept();
+                System.out.println("Cliente conectado: " + jogador2.getInetAddress().getHostAddress());
 
                 saidaJogador1 = new ObjectOutputStream(jogador1.getOutputStream());
                 entradaJogador1 = new ObjectInputStream(jogador1.getInputStream());
@@ -40,7 +42,9 @@ public class Servidor {
                 saidaJogador2 = new ObjectOutputStream(jogador2.getOutputStream());
                 entradaJogador2 = new ObjectInputStream(jogador2.getInputStream());
 
+                System.out.println("Aguardando estrategia 1");
                 Estrategia estrategia1 = (Estrategia) entradaJogador1.readObject();
+                System.out.println("Aguardando estrategia 2");
                 Estrategia estrategia2 = (Estrategia) entradaJogador2.readObject();
 
                 estrategia1.getJogador().setId(0);
@@ -50,6 +54,7 @@ public class Servidor {
                 jogo.setEstrategia1(estrategia1);
                 jogo.setEstrategia2(estrategia2);
 
+                System.out.println("Iniciando jogo");
                 jogo.inicializar();
 
                 saidaJogador1.flush();

@@ -17,7 +17,6 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -31,8 +30,6 @@ import static javax.swing.JFrame.EXIT_ON_CLOSE;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
-import sun.audio.AudioPlayer;
-import sun.audio.AudioStream;
 
 /**
  *
@@ -241,17 +238,6 @@ public class GUICliente extends JFrame {
         } catch (IOException ex) {
             ex.printStackTrace();
         }
-    }
-
-    private void executarMusica(String nome) {
-        AudioPlayer MGP = AudioPlayer.player;
-        AudioStream BGM = null;
-        try {
-            BGM = new AudioStream(new FileInputStream(getClass().getResource("src/Music/" + nome).getFile()));
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
-        MGP.start(BGM);
     }
 
 }
