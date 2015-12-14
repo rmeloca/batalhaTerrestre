@@ -62,9 +62,9 @@ public class Escutar extends Thread {
                     frameConfronto.painelGrelhaInimiga.desabilitarGrelha();
                     frameConfronto.painelGrelhaMinha.desabilitarGrelha();
                     if (acertou) {
-                        JOptionPane.showConfirmDialog(null, frameConfronto.jogo.getEstrategia1().getJogador().getNome() + " Venceu!\n");
-                    } else {
                         JOptionPane.showConfirmDialog(null, frameConfronto.jogo.getEstrategia2().getJogador().getNome() + " Venceu!\n");
+                    } else {
+                        JOptionPane.showConfirmDialog(null, frameConfronto.jogo.getEstrategia1().getJogador().getNome() + " Venceu!\n");
                     }
                     System.exit(0);
                 }
