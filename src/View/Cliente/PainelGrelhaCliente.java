@@ -83,9 +83,12 @@ public class PainelGrelhaCliente extends JPanel {
                     if (frameConfronto.jogo.haVencedor()) {
                         frameConfronto.painelGrelhaInimiga.desabilitarGrelha();
                         frameConfronto.painelGrelhaMinha.desabilitarGrelha();
-                        if (JOptionPane.showConfirmDialog(null, jogador.getNome() + " Venceu!\n") == JOptionPane.OK_OPTION) {
-                            System.exit(0);
+                        if (acertou) {
+                            JOptionPane.showConfirmDialog(null, frameConfronto.jogo.getEstrategia1().getJogador().getNome() + " Venceu!\n");
+                        } else {
+                            JOptionPane.showConfirmDialog(null, frameConfronto.jogo.getEstrategia2().getJogador().getNome() + " Venceu!\n");
                         }
+                        System.exit(0);
                     }
                     if (!acertou) {
                         desabilitarGrelha();
