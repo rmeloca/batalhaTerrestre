@@ -10,7 +10,6 @@ import Jogo.Jogador;
 import Jogo.Tabuleiro.Campo;
 import Jogo.Tabuleiro.Coordenada;
 import View.Cliente.FrameConfrontoCliente;
-import View.Cliente.GUICliente;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.util.ArrayList;
